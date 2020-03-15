@@ -391,6 +391,15 @@ class CreateTest(TestCase):
         actualResult = create(self.inputDictionary)
         self.assertEqual(expectResult, actualResult)
     
+    def test_934OddSize(self):
+        self.setLight(6)
+        self.setDark(5)
+        self.setBlank(1)
+        self.setSize(9)
+        expectResult = {'status': 'error: odd size value'}
+        actualResult = create(self.inputDictionary)
+        self.assertEqual(expectResult, actualResult)
+    
     def test_940SameDarkandLightValue(self):
         self.setLight(5)
         self.setDark(5)
