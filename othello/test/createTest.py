@@ -137,7 +137,7 @@ class CreateTest(TestCase):
         actualResult = create(self.inputDictionary)
         self.assertEqual(expectResult,actualResult)
     
-    def test100_030LowBoundLight(self):
+    def test100_021LowBoundLight(self):
         self.setLight(0)
         self.setDark(5)
         self.setBlank(1)
@@ -145,8 +145,15 @@ class CreateTest(TestCase):
         expectResult = {'board': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 5, 1, 1, 1, 1, 1, 1, 1, 1, 5, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 'tokens': {'light': 0, 'dark': 5, 'blank': 1}, 'status': 'ok', 'integrity': '4bd2efa7e0d5f13551f7277950e45b6fcfe7d5159b80823a5dcbdf57abb4d83a'}
         actualResult = create(self.inputDictionary)
         self.assertEqual(expectResult,actualResult)
-        
     
+    def test100_022MissingLight(self):
+        self.setDark(5)
+        self.setBlank(3)
+        self.setSize(10)
+        expectResult = {'board': [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 5, 3, 3, 3, 3, 3, 3, 3, 3, 5, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3], 'tokens': {'light': 1, 'dark': 5, 'blank': 3}, 'status': 'ok', 'integrity': 'f211a92f576794a821bb24f359739b8b42a6a16634005a1e4b32313a6575e2be'}
+        actualResult = create(self.inputDictionary)
+        self.assertEqual(expectResult,actualResult)
+
     
     
     
