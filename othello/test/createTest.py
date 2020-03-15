@@ -310,7 +310,14 @@ class CreateTest(TestCase):
         actualResult = create(self.inputDictionary)
         self.assertEqual(expectResult, actualResult)
     
-    
+    def test_913NullDark(self):
+        self.setLight(6)
+        self.setDark(None)
+        self.setBlank(1)
+        self.setSize(10)
+        expectResult = {'status': 'error: null dark value'}
+        actualResult = create(self.inputDictionary)
+        self.assertEqual(expectResult, actualResult)
     
     
     
