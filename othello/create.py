@@ -15,6 +15,7 @@ def create(parmDictionary):
         if(not('light' in parmDictionary)):
             parmDictionary['light'] = DEFAULT_LIGHT
         light = parmDictionary['light']
+        print(light)
         if(light == ''):
             resultDict['status'] = 'error: null light value'
             return resultDict
@@ -180,7 +181,7 @@ def create(parmDictionary):
     
 if __name__ == '__main__':
     testdict =  dict()
-    testdict = {'light':1,'dark':2, 'blank':0, 'size':8}
+    testdict = {'light':None,'dark':2, 'blank':0, 'size':8}
     result = create(testdict)
     print(result)
 
