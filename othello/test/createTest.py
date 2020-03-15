@@ -1,8 +1,6 @@
 from unittest import TestCase
 from othello.create import create as create
 
-import json
-
 class CreateTest(TestCase):
     
     def setUp(self):
