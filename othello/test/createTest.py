@@ -337,7 +337,14 @@ class CreateTest(TestCase):
         actualResult = create(self.inputDictionary)
         self.assertEqual(expectResult, actualResult)
     
-    
+    def test_922NonIntegerBlank(self):
+        self.setLight(6)
+        self.setDark(5)
+        self.setBlank('b')
+        self.setSize(10)
+        expectResult = {'status': 'error: non-integer blank value'}
+        actualResult = create(self.inputDictionary)
+        self.assertEqual(expectResult, actualResult)
     
     
     
