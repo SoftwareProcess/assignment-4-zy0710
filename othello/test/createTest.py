@@ -256,7 +256,14 @@ class CreateTest(TestCase):
         actualResult = create(self.inputDictionary)
         self.assertEqual(expectResult, actualResult)
         
-    
+    def test_901BelowBoundLight(self):
+        self.setLight(-1)
+        self.setDark(5)
+        self.setBlank(1)
+        self.setSize(10)
+        expectResult = {'status': 'error: below bound light value'}
+        actualResult = create(self.inputDictionary)
+        self.assertEqual(expectResult, actualResult)
     
     
     
