@@ -346,6 +346,13 @@ class CreateTest(TestCase):
         actualResult = create(self.inputDictionary)
         self.assertEqual(expectResult, actualResult)
     
-    
+    def test_923NullBlank(self):
+        self.setLight(6)
+        self.setDark(5)
+        self.setBlank(None)
+        self.setSize(10)
+        expectResult = {'status': 'error: null blank value'}
+        actualResult = create(self.inputDictionary)
+        self.assertEqual(expectResult, actualResult)
     
     
