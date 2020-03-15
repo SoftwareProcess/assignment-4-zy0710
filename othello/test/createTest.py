@@ -408,3 +408,12 @@ class CreateTest(TestCase):
         expectResult = {'status': 'error: light and blank have the same value'}
         actualResult = create(self.inputDictionary)
         self.assertEqual(expectResult, actualResult)
+    
+    def test_942SameBlankandDarkValue(self):
+        self.setLight(1)
+        self.setDark(2)
+        self.setBlank(2)
+        self.setSize(10)
+        expectResult = {'status': 'error: dark and blank have the same value'}
+        actualResult = create(self.inputDictionary)
+        self.assertEqual(expectResult, actualResult)
