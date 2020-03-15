@@ -245,6 +245,18 @@ class CreateTest(TestCase):
     
     
     
+    #Sad path
+    
+    def test_900AboveBoundLight(self):
+        self.setLight(10)
+        self.setDark(5)
+        self.setBlank(1)
+        self.setSize(10)
+        expectResult = {'status': 'error: above bound light value'}
+        actualResult = create(self.inputDictionary)
+        self.assertEqual(expectResult, actualResult)
+        
+    
     
     
     
