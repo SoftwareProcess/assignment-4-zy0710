@@ -232,6 +232,10 @@ class CreateTest(TestCase):
         actualResult = create(self.inputDictionary)
         self.assertEqual(expectResult,actualResult)
     
+    def test100_060DefaultParameters(self):
+        expectResult = {'board': [0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,1,2,0,0,0, 0,0,0,2,1,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0],'tokens': {'light': 1,'dark': 2, 'blank': 0},'integrity': 'db24b170e77c8bef5416f5d39e1fb94b82245089416b95305756043dd195fcef','status':'ok'}
+        actualResult = create(self.inputDictionary)
+        self.assertEqual(expectResult,actualResult)
     
     
     
