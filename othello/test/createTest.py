@@ -381,3 +381,12 @@ class CreateTest(TestCase):
         expectResult = {'status': 'error: non-integer size value'}
         actualResult = create(self.inputDictionary)
         self.assertEqual(expectResult, actualResult)
+        
+    def test_933NullSize(self):
+        self.setLight(6)
+        self.setDark(5)
+        self.setBlank(1)
+        self.setSize(None)
+        expectResult = {'status': 'error: null size value'}
+        actualResult = create(self.inputDictionary)
+        self.assertEqual(expectResult, actualResult)
