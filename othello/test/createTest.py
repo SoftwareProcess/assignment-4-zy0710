@@ -301,7 +301,14 @@ class CreateTest(TestCase):
         actualResult = create(self.inputDictionary)
         self.assertEqual(expectResult, actualResult)
     
-    
+    def test_912NonIntegerDark(self):
+        self.setLight(6)
+        self.setDark('d')
+        self.setBlank(1)
+        self.setSize(10)
+        expectResult = {'status': 'error: non-integer dark value'}
+        actualResult = create(self.inputDictionary)
+        self.assertEqual(expectResult, actualResult)
     
     
     
