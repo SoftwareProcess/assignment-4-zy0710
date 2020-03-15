@@ -103,8 +103,9 @@ def create(parmDictionary):
         if(size > 16):
             resultDict['status'] = 'error: above bound size value'
             return resultDict
+        
         halfsize = size / 2
-        halfsizeNumeric = float(size)
+        halfsizeNumeric = float(halfsize)
         if(halfsizeNumeric - int(halfsizeNumeric) > 0):
             resultDict['status'] = 'error: odd size value'
             return resultDict
