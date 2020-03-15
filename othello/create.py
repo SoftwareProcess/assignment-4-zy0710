@@ -15,8 +15,7 @@ def create(parmDictionary):
         if(not('light' in parmDictionary)):
             parmDictionary['light'] = DEFAULT_LIGHT
         light = parmDictionary['light']
-        print(light)
-        if(light == ''):
+        if(light == None):
             resultDict['status'] = 'error: null light value'
             return resultDict
         try:
@@ -39,7 +38,7 @@ def create(parmDictionary):
         if(not('dark' in parmDictionary)):
             parmDictionary['dark'] = DEFAULT_DARK
         dark = parmDictionary['dark']
-        if(dark == ''):
+        if(dark == None):
             resultDict['status'] = 'error: null dark value'
             return resultDict
         try:
@@ -63,7 +62,7 @@ def create(parmDictionary):
         if(not('blank' in parmDictionary)):
             parmDictionary['blank'] = DEFAULT_BLANK
         blank = parmDictionary['blank']
-        if(blank == ''):
+        if(blank == None):
             resultDict['status'] = 'error: null blank value'
             return resultDict
         try:
@@ -86,7 +85,7 @@ def create(parmDictionary):
         if(not('size' in parmDictionary)):
             parmDictionary['size'] = DEFAULT_SIZE
         size = parmDictionary['size']
-        if(size == ''):
+        if(size == None):
             resultDict['status'] = 'error: null size value'
             return resultDict  
         try:
@@ -179,11 +178,11 @@ def create(parmDictionary):
     
 
     
-if __name__ == '__main__':
-    testdict =  dict()
-    testdict = {'light':None,'dark':2, 'blank':0, 'size':8}
-    result = create(testdict)
-    print(result)
+# if __name__ == '__main__':
+#     testdict =  dict()
+#     testdict = {'light':None,'dark':2, 'blank':0, 'size':8}
+#     result = create(testdict)
+#     print(result)
 
 
     
