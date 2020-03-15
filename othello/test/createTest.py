@@ -275,12 +275,13 @@ class CreateTest(TestCase):
         self.assertEqual(expectResult, actualResult)
      
     def test_903NullLight(self):
-        self.setLight(None)
+        self.setLight('')
         self.setDark(5)
         self.setBlank(1)
         self.setSize(10)
         expectResult = {'status': 'error: null light value'}
         actualResult = create(self.inputDictionary)
+        self.assertEqual(expectResult, actualResult) 
  
     
     def test_910AboveBoundDark(self):
@@ -312,7 +313,7 @@ class CreateTest(TestCase):
     
     def test_913NullDark(self):
         self.setLight(6)
-        self.setDark(None)
+        self.setDark('')
         self.setBlank(1)
         self.setSize(10)
         expectResult = {'status': 'error: null dark value'}
@@ -349,7 +350,7 @@ class CreateTest(TestCase):
     def test_923NullBlank(self):
         self.setLight(6)
         self.setDark(5)
-        self.setBlank(None)
+        self.setBlank('')
         self.setSize(10)
         expectResult = {'status': 'error: null blank value'}
         actualResult = create(self.inputDictionary)
@@ -386,7 +387,7 @@ class CreateTest(TestCase):
         self.setLight(6)
         self.setDark(5)
         self.setBlank(1)
-        self.setSize(None)
+        self.setSize('')
         expectResult = {'status': 'error: null size value'}
         actualResult = create(self.inputDictionary)
         self.assertEqual(expectResult, actualResult)

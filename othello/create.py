@@ -15,7 +15,7 @@ def create(parmDictionary):
         if(not('light' in parmDictionary)):
             parmDictionary['light'] = DEFAULT_LIGHT
         light = parmDictionary['light']
-        if(light == None):
+        if(light == ''):
             resultDict['status'] = 'error: null light value'
             return resultDict
         try:
@@ -38,7 +38,7 @@ def create(parmDictionary):
         if(not('dark' in parmDictionary)):
             parmDictionary['dark'] = DEFAULT_DARK
         dark = parmDictionary['dark']
-        if(dark == None):
+        if(dark == ''):
             resultDict['status'] = 'error: null dark value'
             return resultDict
         try:
@@ -62,13 +62,13 @@ def create(parmDictionary):
         if(not('blank' in parmDictionary)):
             parmDictionary['blank'] = DEFAULT_BLANK
         blank = parmDictionary['blank']
-        if(blank == None):
+        if(blank == ''):
             resultDict['status'] = 'error: null blank value'
             return resultDict
         try:
             blankNumeric = float(blank)
             if(blankNumeric - int(blankNumeric) > 0):
-                resultDict['status'] = 'error: float blank value'
+                resultDict['status'] = 'error: non-integer blank value'
                 return resultDict
             blank = int(blank)
         except:
@@ -85,7 +85,7 @@ def create(parmDictionary):
         if(not('size' in parmDictionary)):
             parmDictionary['size'] = DEFAULT_SIZE
         size = parmDictionary['size']
-        if(size == None):
+        if(size == ''):
             resultDict['status'] = 'error: null size value'
             return resultDict  
         try:
