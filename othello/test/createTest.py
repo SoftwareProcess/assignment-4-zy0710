@@ -273,8 +273,16 @@ class CreateTest(TestCase):
         expectResult = {'status': 'error: non-integer light value'}
         actualResult = create(self.inputDictionary)
         self.assertEqual(expectResult, actualResult)
-    
-    
+     
+    def test_903NullLight(self):
+        self.setLight(None)
+        self.setDark(5)
+        self.setBlank(1)
+        self.setSize(10)
+        expectResult = {'status': 'error: null light value'}
+        actualResult = create(self.inputDictionary)
+        self.assertEqual(expectResult, actualResult)
+        
     
     
     
