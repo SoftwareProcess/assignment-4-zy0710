@@ -363,3 +363,12 @@ class CreateTest(TestCase):
         expectResult = {'status': 'error: above bound size value'}
         actualResult = create(self.inputDictionary)
         self.assertEqual(expectResult, actualResult)
+    
+    def test_931BelowBoundSize(self):
+        self.setLight(6)
+        self.setDark(5)
+        self.setBlank(1)
+        self.setSize(5)
+        expectResult = {'status': 'error: below bound size value'}
+        actualResult = create(self.inputDictionary)
+        self.assertEqual(expectResult, actualResult)
