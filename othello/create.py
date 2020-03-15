@@ -68,7 +68,7 @@ def create(parmDictionary):
         try:
             blankNumeric = float(blank)
             if(blankNumeric - int(blankNumeric) > 0):
-                resultDict['status'] = 'error: non-integer blank value'
+                resultDict['status'] = 'error: float blank value'
                 return resultDict
             blank = int(blank)
         except:
@@ -110,6 +110,17 @@ def create(parmDictionary):
             resultDict['status'] = 'error: odd size value'
             return resultDict
         size = int(size)
+        
+        if(dark == light):
+            resultDict['status'] = 'error: light and dark have the same value'
+            return resultDict
+        if(blank == light):
+            resultDict['status'] = 'error: light and blank have the same value'
+            return resultDict
+        if(dark == blank):
+            resultDict['status'] = 'error: dark and blank have the same value'
+            return resultDict
+            
     
     # Catch validation problems and return error diagnostic
     except Exception as e:
@@ -174,17 +185,6 @@ def create(parmDictionary):
     
     resultDict['status'] = 'ok'
     return resultDict
-
-    
-    
-
-    
-# if __name__ == '__main__':
-#     testdict =  dict()
-#     testdict = {'light':None,'dark':2, 'blank':0, 'size':8}
-#     result = create(testdict)
-#     print(result)
-
 
     
         

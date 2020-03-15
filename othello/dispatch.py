@@ -9,7 +9,7 @@ ERROR03 = 'error: op is not legal'
 STATUS = 'status'
 OP = 'op'
 OPS = {
-    'create' : create._create,
+    'create' : create.create,
     'status' : status._status,
     'place' : place._place,
     'next' : next._next,
