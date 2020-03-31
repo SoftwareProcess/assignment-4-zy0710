@@ -490,6 +490,16 @@ class StatusTest(TestCase):
         actualResult = status(self.inputDictionary)
         self.assertEqual(expectResult,actualResult)
     
+    def test_935BelowBoungdBoard(self):
+        self.setLight(1)
+        self.setDark(2)
+        self.setBlank(3)
+        self.setBoard([3, 3, 3, 3, 3, 1, 2, 3, 3, 2, 1, 3, 3, 3, 3, 3])
+        self.setIntegrity('4c5f1af4b0738e9d421d1321cec061f3f2fdaf658ff42328b9be7cace38248de')
+        expectResult = {'status': 'error: below board'}
+        actualResult = status(self.inputDictionary)
+        self.assertEqual(expectResult,actualResult)
+    
     def test_940ShortIntegrity(self):
         self.setLight(1)
         self.setDark(2)
