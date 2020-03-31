@@ -96,14 +96,77 @@ import re
 # if a < b:
 #     print(1)
 
-integrity = 'f01977c17f801c43eeb13fb9f74a49bd0c761db3cdffe01510f47ddd23ab465'
-char = re.findall(r'[a-f]',integrity)
-print(char)
-bigchar = re.findall(r'[A-F]',integrity)
-print(bigchar)
-num = re.findall(r'[0-9]',integrity)
-print(num)
-lenstr = len(char)+len(bigchar)+len(num)
-print(lenstr)
+# integrity = 'f01977c17f801c43eeb13fb9f74a49bd0c761db3cdffe01510f47ddd23ab465'
+# char = re.findall(r'[a-f]',integrity)
+# print(char)
+# bigchar = re.findall(r'[A-F]',integrity)
+# print(bigchar)
+# num = re.findall(r'[0-9]',integrity)
+# print(num)
+# lenstr = len(char)+len(bigchar)+len(num)
+# print(lenstr)
 # if (lenstr == 64):
 #     print(1)
+
+# 
+# def calsha256(board, light, dark, blank, nextplayer):
+#     board_new = [str(x) for x in board]
+#     strboard = ''.join(board_new)
+#  
+#     followinglist = []
+#     followinglist.append('/')
+#     followinglist.append(light)
+#     followinglist.append('/')
+#     followinglist.append(dark)
+#     followinglist.append('/')
+#     followinglist.append(blank)
+#     followinglist.append('/')
+#     followinglist_new = followinglist
+#     followinglist_new.append(nextplayer)
+#      
+#     followinglist_new1 = [str(x) for x in followinglist_new]
+#     strfollowinglist = ''.join(followinglist_new1)
+#     str_new = strboard + strfollowinglist
+#      
+#     h = hashlib.sha256()
+#     h.update(str_new.encode())
+#     integrity = h.hexdigest()
+#     return integrity
+#  
+# if __name__ == '__main__':
+#     light =1
+#     dark=2
+#     blank=0
+#     board =[1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0, 1,1,1,1,1,1,0,0,1,1,1,1,1,1,0,2,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1]
+#     h1=calsha256(board, light, dark, blank, light)
+#     h2 =calsha256(board, light, dark, blank, dark)
+#     print(h1)
+#     print(h2)
+#     integrity ='8a1c0659575e8cdd01b2e4ff3f431c845e7e7960279bb7abfaa5465e4a755354'
+    
+  
+# a = '333333333333331233332223333333333333/1/2/3/1'
+# h = hashlib.sha256()
+# h.update(a.encode())
+# integrity = h.hexdigest()
+# print(integrity)
+    
+a = '1111111111111111111111111111111011111100111111021111111011111111/1/2/0/1'
+b = '1111111111111111111111111111111011111100111111021111111011111111/1/2/0/2'
+h1 = hashlib.sha256()
+h2 = hashlib.sha256()
+h1.update(a.encode())
+h2.update(b.encode())
+s1 = h1.hexdigest()
+s2 = h2.hexdigest()
+print(s1)
+print(s2)
+
+# 
+# a = '000000000000001200002100000000000000/1/2/0/2'
+# h = hashlib.sha256()
+# h.update(a.encode())
+# integrity = h.hexdigest()
+# print(integrity)
+
+

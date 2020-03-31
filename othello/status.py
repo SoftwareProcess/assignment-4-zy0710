@@ -144,7 +144,7 @@ def _status(parmDictionary):
     integrity_light = calsha256(board, light, dark, blank, light)
     integrity_dark =calsha256(board, light, dark, blank, dark)
     
-    if (integrity != integrity_light) and (integrity != integrity_light):
+    if (integrity != integrity_light) and (integrity != integrity_dark):
         resultDict['status'] = 'error: invalid integrity'
         return resultDict
     
