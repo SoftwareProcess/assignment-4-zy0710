@@ -37,11 +37,28 @@ def _status(parmDictionary):
         resultDict['status'] = 'error: above bound light'
         return resultDict
     
-    
     # Validate dark
     if(not('dark' in parmDictionary)):
         parmDictionary['dark'] = DEFAULT_DARK
     dark = parmDictionary['dark']
+    if(dark == ''):
+        resultDict['status'] = 'error: null dark'
+        return resultDict
+    try:
+        darkNumeric = float(dark)
+        if(darkNumeric - int(darkNumeric) > 0):
+            resultDict['status'] = 'error: non integer dark'
+            return resultDict
+        dark = int(dark)
+    except:
+        resultDict['status'] = 'error: non integer dark'
+        return resultDict
+    if(dark < 0):
+        resultDict['status'] = 'error: below bound dark'
+        return resultDict
+    if(dark > 9):
+        resultDict['status'] = 'error: above bound dark'
+        return resultDict
     
     # Validate blank
     if(not('blank' in parmDictionary)):
