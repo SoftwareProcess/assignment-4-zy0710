@@ -341,6 +341,14 @@ class StatusTest(TestCase):
         actualResult = status(self.inputDictionary)
         self.assertEqual(expectResult,actualResult)
         
-    
+    def test_902NonIntegerLight(self):
+        self.setLight('X')
+        self.setDark(2)
+        self.setBlank(1)
+        self.setBoard([1,1,1,1,1,1,1,1,1,1,1,1,1,1,X,2,1,1,1,1,2,X,1,1,1,1,1,1,1,1,1,1,1,1,1,1])
+        self.setIntegrity('8959fc376b23af1520014ef3bef1eb4f924ec692bbbcd9f638245bf85fb0a6da')
+        expectResult = {'status': 'error: non integer light'}
+        actualResult = status(self.inputDictionary)
+        self.assertEqual(expectResult,actualResult)
         
         
