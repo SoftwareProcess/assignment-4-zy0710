@@ -259,7 +259,15 @@ class StatusTest(TestCase):
         actualResult = status(self.inputDictionary)
         self.assertEqual(expectResult,actualResult)
     
-    
+    def test100_060DarkNextPlayer(self):
+        self.setLight(1)
+        self.setDark(2)
+        self.setBlank(3)
+        self.setBoard([3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,2,3,3,3,3,2,1,3,3,3,3,3,3,3,3,3,3,3,3,3,3])
+        self.setIntegrity('f01977c17f801c43eeb13fb9f74a49bd0c761db3cdffe01510f47ddd23ab465a')
+        expectResult = {'status': 'ok'}
+        actualResult = status(self.inputDictionary)
+        self.assertEqual(expectResult,actualResult)
     
     
     
