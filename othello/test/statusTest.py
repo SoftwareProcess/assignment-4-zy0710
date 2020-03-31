@@ -509,3 +509,12 @@ class StatusTest(TestCase):
         expectResult = {'status': 'error: non hex characters integrity'}
         actualResult = status(self.inputDictionary)
         self.assertEqual(expectResult,actualResult)
+    
+    def test_943MissingIntegrity(self):
+        self.setLight(1)
+        self.setDark(2)
+        self.setBlank(3)
+        self.setBoard([3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,2,3,3,3,3,2,1,3,3,3,3,3,3,3,3,3,3,3,3,3,3])
+        expectResult = {'status': 'error: missing integrity'}
+        actualResult = status(self.inputDictionary)
+        self.assertEqual(expectResult,actualResult)
