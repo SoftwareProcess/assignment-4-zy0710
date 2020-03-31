@@ -93,6 +93,11 @@ def _status(parmDictionary):
     if(board == ''):
         resultDict['status'] = 'error: null board'
         return resultDict
+    
+    if (light not in board) or (dark not in board) or (blank not in board):
+        resultDict['status'] = 'error: non light/dark/blank tokens board'
+        return resultDict
+        
     # Validate Size
     size = math.sqrt(len(board))
     sizeNumeric = float(size)
