@@ -274,7 +274,7 @@ class StatusTest(TestCase):
         self.setDark(2)
         self.setBlank(3)
         self.setBoard([3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,2,3,3,3,3,2,2,2,3,3,3,3,3,3,3,3,3,3,3,3,3])
-        self.setIntegrity('66271cbb9037c515e73be3a74a37259a179f2d2861cf4e82130cd579a2141093')
+        self.setIntegrity('9c80025a28431ae3757f8acd1ba86e4604fb2ee8885ff7d4e1d44e3d0850297b')
         expectResult = {'status': 'ok'}
         actualResult = status(self.inputDictionary)
         self.assertEqual(expectResult,actualResult)
@@ -314,7 +314,7 @@ class StatusTest(TestCase):
         self.setDark(2)
         self.setBlank(0)
         self.setBoard([1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0, 1,1,1,1,1,1,0,0,1,1,1,1,1,1,0,2,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1])
-        self.setIntegrity('8a1c0659575e8cdd01b2e4ff3f431c845e7e7960279bb7abfaa5465e4a755354')
+        self.setIntegrity('66753f8bbb35e87b7c5171fb96c84149601ca7ceacffa67694b65a8ef2f6e209')
         expectResult = {'status': 'end'}
         actualResult = status(self.inputDictionary)
         self.assertEqual(expectResult,actualResult)
