@@ -1,3 +1,291 @@
-def _status(parms):
-    result = {'status': 'status stub'}
-    return result
+'''
+    Created on Mar 30, 2020
+    
+    @author:  Ye Zhao
+'''
+
+import math
+import numpy as np
+
+def _status(parmDictionary):
+    
+    DEFAULT_LIGHT = 1
+    DEFAULT_DARK = 2
+    DEFAULT_BLANK = 0
+    resultDict = {}
+    
+    # Validate light
+    if(not('light' in parmDictionary)):
+        parmDictionary['light'] = DEFAULT_LIGHT
+    light = parmDictionary('light')
+    
+    # Validate dark
+    if(not('dark' in parmDictionary)):
+        parmDictionary['dark'] = DEFAULT_DARK
+    dark = parmDictionary('dark')
+    
+    # Validate blank
+    if(not('blank' in parmDictionary)):
+        parmDictionary['blank'] = DEFAULT_BLANK
+    blank = parmDictionary('blank')
+    
+    # Validate board
+    board = parmDictionary('board')
+    
+    # Validate integrity
+    integrity = parmDictionary('integrity')
+    
+    # Validate Size
+    size = int(math.sqrt(len(board)))
+
+    # get the final board shape
+    board_array = np.array(board)
+    finalboard = np.reshape(board_array, (size, size))
+    
+    possiblewaysDict ={}
+    i=0
+    j=0
+    
+    for index1 in range(0,size):
+        for index2 in range(0,size):
+            if (finalboard[index1][index2] == light):
+                has0 = closeblock0(finalboard, index1, index2, blank, size)
+                has1 = closeblock1(finalboard, index1, index2, blank, size)
+                has2 = closeblock2(finalboard, index1, index2, blank, size)
+                has3 = closeblock3(finalboard, index1, index2, blank, size)
+                has4 = closeblock4(finalboard, index1, index2, blank, size)
+                has5 = closeblock5(finalboard, index1, index2, blank, size)
+                has6 = closeblock6(finalboard, index1, index2, blank, size)
+                has7 = closeblock7(finalboard, index1, index2, blank, size)
+                final_has = has0+has1+has2+has3+has4+has5+has6+has7
+                if final_has != 0
+                possiblewaysDict['light'][i]=[index1,index2,final_has]
+                i += 1
+            if (finalboard[index1][index2] == dark):
+                has0 = closeblock0(finalboard, index1, index2, blank, size)
+                has1 = closeblock1(finalboard, index1, index2, blank, size)
+                has2 = closeblock2(finalboard, index1, index2, blank, size)
+                has3 = closeblock3(finalboard, index1, index2, blank, size)
+                has4 = closeblock4(finalboard, index1, index2, blank, size)
+                has5 = closeblock5(finalboard, index1, index2, blank, size)
+                has6 = closeblock6(finalboard, index1, index2, blank, size)
+                has7 = closeblock7(finalboard, index1, index2, blank, size)
+                final_has = has0+has1+has2+has3+has4+has5+has6+has7
+                possiblewaysDict['dark'][j]=[index1,index2,final_has]
+                j += 1
+            else:
+                 
+                
+                
+                    
+
+# determine if it is out of boundary                       
+def hasposition(x, y, maxsize):
+    if x < 0 or x > maxsize or y <0 or y > maxsize :
+        return 0
+    return 1
+
+# left-up
+def closeblock0(board, row, column, blank, size):
+    has = 0
+    getchess = board[row][column]
+    row = row-1
+    column = column-1
+    if hasposition(row, column, size) == 1:
+        if board[row][column] == blank:
+            return has
+        if board[row][column] == getchess:
+            return has
+        while board[row][column] != getchess:
+            row -=1
+            column -=1
+            if hasposition(row, column, size) == 1:
+                if board[row][column] == blank:
+                    has = 1
+                    return has
+                if board[row][column] == getchess:
+                    has = 0
+                    return has
+            else:
+                return has
+    else:
+        return has
+
+# up     
+def closeblock1(board, row, column, blank, size):
+    has = 0
+    getchess = board[row][column]
+    row = row-1
+    if hasposition(row, column, size) == 1:
+        if board[row][column] == blank:
+            return has
+        if board[row][column] == getchess:
+            return has
+        while board[row][column] != getchess:
+            row -=1
+            if hasposition(row, column, size) == 1:
+                if board[row][column] == blank:
+                    has = 1
+                    return has
+                if board[row][column] == getchess:
+                    has = 0
+                    return has
+            else:
+                return has
+    else:
+        return has
+# right-up
+def closeblock2(board, row, column, blank, size):
+    has = 0
+    getchess = board[row][column]
+    row = row-1
+    column = column+1
+    if hasposition(row, column, size) == 1:
+        if board[row][column] == blank:
+            return has
+        if board[row][column] == getchess:
+            return has
+        while board[row][column] != getchess:
+            row -=1
+            column +=1
+            if hasposition(row, column, size) == 1:
+                if board[row][column] == blank:
+                    has = 1
+                    return has
+                if board[row][column] == getchess:
+                    has = 0
+                    return has
+            else:
+                return has
+    else:
+        return has
+    
+# left
+def closeblock3(board, row, column, blank, size):
+    has = 0
+    getchess = board[row][column]
+    column = column-1
+    if hasposition(row, column, size) == 1:
+        if board[row][column] == blank:
+            return has
+        if board[row][column] == getchess:
+            return has
+        while board[row][column] != getchess:
+            column -=1
+            if hasposition(row, column, size) == 1:
+                if board[row][column] == blank:
+                    has = 1
+                    return has
+                if board[row][column] == getchess:
+                    has = 0
+                    return has
+            else:
+                return has
+    else:
+        return has
+
+# right
+def closeblock4(board, row, column, blank, size):
+    has = 0
+    getchess = board[row][column]
+    column = column+1
+    if hasposition(row, column, size) == 1:
+        if board[row][column] == blank:
+            return has
+        if board[row][column] == getchess:
+            return has
+        while board[row][column] != getchess:
+            column +=1
+            if hasposition(row, column, size) == 1:
+                if board[row][column] == blank:
+                    has = 1
+                    return has
+                if board[row][column] == getchess:
+                    has = 0
+                    return has
+            else:
+                return has
+    else:
+        return has
+           
+# left-down
+def closeblock5(board, row, column, blank, size):
+    has = 0
+    getchess = board[row][column]
+    row = row+1
+    column = column-1
+    if hasposition(row, column, size) == 1:
+        if board[row][column] == blank:
+            return has
+        if board[row][column] == getchess:
+            return has
+        while board[row][column] != getchess:
+            row = row+1
+            column -=1
+            if hasposition(row, column, size) == 1:
+                if board[row][column] == blank:
+                    has = 1
+                    return has
+                if board[row][column] == getchess:
+                    has = 0
+                    return has
+            else:
+                return has
+    else:
+        return has
+
+# down
+def closeblock6(board, row, column, blank, size):
+    has = 0
+    getchess = board[row][column]
+    row = row+1
+    if hasposition(row, column, size) == 1:
+        if board[row][column] == blank:
+            return has
+        if board[row][column] == getchess:
+            return has
+        while board[row][column] != getchess:
+            row +=1
+            if hasposition(row, column, size) == 1:
+                if board[row][column] == blank:
+                    has = 1
+                    return has
+                if board[row][column] == getchess:
+                    has = 0
+                    return has
+            else:
+                return has
+    else:
+        return has  
+
+# right-down
+def closeblock7(board, row, column, blank, size):
+    has = 0
+    getchess = board[row][column]
+    row = row+1
+    column = column+1
+    if hasposition(row, column, size) == 1:
+        if board[row][column] == blank:
+            return has
+        if board[row][column] == getchess:
+            return has
+        while board[row][column] != getchess:
+            row +=1
+            column +=1
+            if hasposition(row, column, size) == 1:
+                if board[row][column] == blank:
+                    has = 1
+                    return has
+                if board[row][column] == getchess:
+                    has = 0
+                    return has
+            else:
+                return has
+    else:
+        return has            
+                
+        
+    
+    
+    
+    
