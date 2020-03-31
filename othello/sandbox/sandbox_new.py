@@ -57,5 +57,6 @@ from _sqlite3 import IntegrityError
 #     
 
 integrity = 'f01977c17f801c43eeb13fb9f74a49bd0c761db3cdffe01510f47ddd23ab465'
+str = ''
 print(len(integrity))
     
