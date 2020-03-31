@@ -85,7 +85,11 @@ def _status(parmDictionary):
     if light_possibleways >0 and dark_possibleways == 0:
         resultDict['status'] = 'light'
         return resultDict
-            
+      
+    if light_possibleways == 0 and dark_possibleways == 0:
+        resultDict['status'] = 'end'
+        return resultDict     
+     
     else:
         resultDict['status'] = 'not ok'
         return resultDict
