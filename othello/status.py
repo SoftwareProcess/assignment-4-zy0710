@@ -86,6 +86,7 @@ def _status(parmDictionary):
     # Validate board
     if(not('board' in parmDictionary)):
         resultDict['status'] = 'error: missing board'
+        return resultDict
     board = parmDictionary['board']
     if(board == ''):
         resultDict['status'] = 'error: null board'
