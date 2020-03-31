@@ -7,6 +7,7 @@
 import math
 import numpy as np
 import re
+import hashlib
 
 def _status(parmDictionary):
     
@@ -139,6 +140,14 @@ def _status(parmDictionary):
     if(dark == blank):
         resultDict['status'] = 'error: blank and dark have the same value'
         return resultDict
+    
+    integrity_light = calsha256(board, light, dark, blank, light)
+    integrity_dark =calsha256(board, light, dark, blank, dark)
+    
+    if (integrity != integrity_light) and (integrity != integrity_light):
+        resultDict['status'] = 'error: invalid integrity'
+        return resultDict
+    
 
     # get the number of possible ways of light and dark tokens
     light_possibleways = 0
@@ -192,7 +201,7 @@ def _status(parmDictionary):
         resultDict['status'] = 'not ok'
         return resultDict
 
-# determine if the str is hex
+# determine if the string is hex
 def ishex(s):
     lowerchar = re.findall(r'[a-f]',s)
     upperchar = re.findall(r'[A-F]',s)
@@ -202,6 +211,37 @@ def ishex(s):
         return 0
     if lenstr != 64:
         return 1
+
+# calculate the integrity based on the board
+def calsha256(board, light, dark, blank, nextplayer):
+    board_new = [str(x) for x in board]
+    strboard = ''.join(board_new)
+
+    followinglist = []
+    followinglist.append('/')
+    followinglist.append(light)
+    followinglist.append('/')
+    followinglist.append(dark)
+    followinglist.append('/')
+    followinglist.append(blank)
+    followinglist.append('/')
+    followinglist_new = followinglist
+    followinglist_new.append(nextplayer)
+    
+    followinglist_new1 = [str(x) for x in followinglist_new]
+    strfollowinglist = ''.join(followinglist_new1)
+    str_new = strboard + strfollowinglist
+    
+    h = hashlib.sha256()
+    h.update(str_new.encode())
+    integrity = h.hexdigest()
+    
+    return integrity
+
+    
+    
+    
+    
     
 # determine if it is out of boundary                       
 def hasposition(x, y, maxsize):
