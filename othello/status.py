@@ -42,12 +42,13 @@ def _status(parmDictionary):
     board_array = np.array(board)
     finalboard = np.reshape(board_array, (size, size))
     
-    possiblewaysDict ={}
-    i=0
-    j=0
+    # get the number of possible ways of light and dark tokens
+    light_possibleways = 0
+    dark_possibleways = 0
     
     for index1 in range(0,size):
         for index2 in range(0,size):
+            # get the light tokens possible ways number
             if (finalboard[index1][index2] == light):
                 has0 = closeblock0(finalboard, index1, index2, blank, size)
                 has1 = closeblock1(finalboard, index1, index2, blank, size)
@@ -58,9 +59,8 @@ def _status(parmDictionary):
                 has6 = closeblock6(finalboard, index1, index2, blank, size)
                 has7 = closeblock7(finalboard, index1, index2, blank, size)
                 final_has = has0+has1+has2+has3+has4+has5+has6+has7
-                if final_has != 0
-                possiblewaysDict['light'][i]=[index1,index2,final_has]
-                i += 1
+                light_possibleways +=final_has
+            # get the dark tokens possible ways number
             if (finalboard[index1][index2] == dark):
                 has0 = closeblock0(finalboard, index1, index2, blank, size)
                 has1 = closeblock1(finalboard, index1, index2, blank, size)
@@ -71,13 +71,16 @@ def _status(parmDictionary):
                 has6 = closeblock6(finalboard, index1, index2, blank, size)
                 has7 = closeblock7(finalboard, index1, index2, blank, size)
                 final_has = has0+has1+has2+has3+has4+has5+has6+has7
-                possiblewaysDict['dark'][j]=[index1,index2,final_has]
-                j += 1
-            else:
-                 
-                
-                
-                    
+                dark_possibleways +=final_has
+    
+    # determine the status
+    if light_possibleways >0 and dark_possibleways >0:
+        resultDict['status'] = 'ok'
+        return resultDict
+    
+    else:
+        resultDict['status'] = 'not ok'
+        return resultDict
 
 # determine if it is out of boundary                       
 def hasposition(x, y, maxsize):
@@ -110,7 +113,7 @@ def closeblock0(board, row, column, blank, size):
                 return has
     else:
         return has
-
+    
 # up     
 def closeblock1(board, row, column, blank, size):
     has = 0
@@ -134,6 +137,7 @@ def closeblock1(board, row, column, blank, size):
                 return has
     else:
         return has
+    
 # right-up
 def closeblock2(board, row, column, blank, size):
     has = 0
