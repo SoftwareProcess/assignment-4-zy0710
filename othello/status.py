@@ -84,17 +84,35 @@ def _status(parmDictionary):
         return resultDict
     
     # Validate board
+    if(not('board' in parmDictionary)):
+        resultDict['status'] = 'error: missing board'
     board = parmDictionary['board']
-    
-    # Validate integrity
-    integrity = parmDictionary['integrity']
-    
+    if(board == ''):
+        resultDict['status'] = 'error: null board'
+        return resultDict
     # Validate Size
-    size = int(math.sqrt(len(board)))
+    size = math.sqrt(len(board))
+    sizeNumeric = float(size)
+    if(sizeNumeric - int(sizeNumeric) > 0):
+        resultDict['status'] = 'error: non square board'
+        return resultDict 
+    size = int(size)
+    # size is odd or not
+    halfsize = size / 2
+    halfsizeNumeric = float(halfsize)
+    if(halfsizeNumeric - int(halfsizeNumeric) > 0):
+        resultDict['status'] = 'error: odd board'
+        return resultDict
+    size = int(size)
 
     # get the final board shape
     board_array = np.array(board)
     finalboard = np.reshape(board_array, (size, size))
+    
+    # Validate integrity
+    integrity = parmDictionary['integrity']
+    
+    
     
     # get the number of possible ways of light and dark tokens
     light_possibleways = 0
