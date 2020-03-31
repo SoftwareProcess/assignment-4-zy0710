@@ -88,7 +88,7 @@ def _status(parmDictionary):
 
 # determine if it is out of boundary                       
 def hasposition(x, y, maxsize):
-    if x < 0 or x > maxsize or y <0 or y > maxsize :
+    if x < 0 or x > maxsize-1 or y <0 or y > maxsize-1 :
         return 0
     return 1
 
