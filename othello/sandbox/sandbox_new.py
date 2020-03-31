@@ -3,6 +3,7 @@ import math
 import numpy as np
 from pip._vendor.pyparsing import col
 from _sqlite3 import IntegrityError
+import re
 # 
 # board = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 # board_size = len(board)
@@ -56,7 +57,53 @@ from _sqlite3 import IntegrityError
 #     print(re)
 #     
 
+# integrity = 'f01977c17f801c43eeb13fb9f74a49bd0c761db3cdffe01510f47ddd23ab465'
+# print(len(integrity))
+
+# def ishex(s):
+#     list_s = list(s)
+#     nohex = 0
+#     for i in range (0, len(list_s)):
+#         print(list_s[i])
+#         if (list_s[i] >= '0' ) and (list_s[i] <= '9'):
+#             nohex +=0
+#             print(nohex)
+#         if (list_s[i] >= 'A') and (list_s[i] <= 'F'):
+#             nohex +=0
+#             print(nohex)
+#         if (list_s[i] >= 'a') and (list_s[i] <= 'f'):
+#             nohex +=0
+#             print(nohex)
+#         else:
+#             nohex +=1
+#             print(nohex)
+#      
+#     if nohex == 0:
+#         return 0
+#     if nohex != 0:
+#         return 1
+#  
+# if __name__ == '__main__':
+#     integrity = 'f01977c17f801c43eeb13fb9f74a49bd0c761db3cdffe01510f47ddd23ab465'
+#     print(len(integrity))
+#     list_i = list(integrity)
+#     print(list_i)
+#     re = ishex(integrity)
+#     print(re)
+
+# a = '3'
+# b = '4'
+# if a < b:
+#     print(1)
+
 integrity = 'f01977c17f801c43eeb13fb9f74a49bd0c761db3cdffe01510f47ddd23ab465'
-str = ''
-print(len(integrity))
-    
+char = re.findall(r'[a-f]',integrity)
+print(char)
+bigchar = re.findall(r'[A-F]',integrity)
+print(bigchar)
+num = re.findall(r'[0-9]',integrity)
+print(num)
+lenstr = len(char)+len(bigchar)+len(num)
+print(lenstr)
+# if (lenstr == 64):
+#     print(1)

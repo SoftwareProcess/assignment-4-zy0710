@@ -185,7 +185,7 @@ def _status(parmDictionary):
 def ishex(s):
     list_s = list(s)
     nohex = 0
-    for i in range (0, len(str)):
+    for i in range (0, len(s)):
         if (list_s[i] >= '0') and (list_s[i] <= '9'):
             nohex +=0
         if (list_s[i] >= 'A') and (list_s[i] <= 'F'):
