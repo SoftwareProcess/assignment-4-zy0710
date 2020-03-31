@@ -1,5 +1,11 @@
+'''
+    Created on Mar 12, 2020
+
+    @author: Ye Zhao
+'''
+
 from unittest import TestCase
-from othello.create import create as create
+from othello.create import _create as create
 
 class CreateTest(TestCase):
     

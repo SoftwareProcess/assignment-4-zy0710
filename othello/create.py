@@ -1,6 +1,12 @@
+'''
+    Created on Mar 12, 2020
+    
+    @author:  Ye Zhao
+'''
+
 import hashlib
 
-def create(parmDictionary):
+def _create(parmDictionary):
     ERROR_HEADER = 'error: '
     ERROR_KEY = 'error'
     DEFAULT_LIGHT = 1
