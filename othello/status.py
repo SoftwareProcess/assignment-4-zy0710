@@ -64,6 +64,24 @@ def _status(parmDictionary):
     if(not('blank' in parmDictionary)):
         parmDictionary['blank'] = DEFAULT_BLANK
     blank = parmDictionary['blank']
+    if(blank == ''):
+        resultDict['status'] = 'error: null blank'
+        return resultDict
+    try:
+        blankNumeric = float(blank)
+        if(blankNumeric - int(blankNumeric) > 0):
+            resultDict['status'] = 'error: non integer blank'
+            return resultDict
+        blank = int(blank)
+    except:
+        resultDict['status'] = 'error: non integer blank'
+        return resultDict
+    if(blank < 0):
+        resultDict['status'] = 'error: below bound blank'
+        return resultDict
+    if(blank > 9):
+        resultDict['status'] = 'error: above bound blank'
+        return resultDict
     
     # Validate board
     board = parmDictionary['board']
