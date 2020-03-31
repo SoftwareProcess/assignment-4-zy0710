@@ -129,6 +129,16 @@ def _status(parmDictionary):
     if (ishex(integrity) != 0):
         resultDict['status'] = 'error: non hex characters integrity'
         return resultDict
+    
+    if(dark == light):
+        resultDict['status'] = 'error: dark and light have the same value'
+        return resultDict
+    if(blank == light):
+        resultDict['status'] = 'error: blank and light have the same value'
+        return resultDict
+    if(dark == blank):
+        resultDict['status'] = 'error: blank and dark have the same value'
+        return resultDict
 
     # get the number of possible ways of light and dark tokens
     light_possibleways = 0
