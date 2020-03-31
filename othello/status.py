@@ -111,10 +111,24 @@ def _status(parmDictionary):
     finalboard = np.reshape(board_array, (size, size))
     
     # Validate integrity
+    if(not('integrity' in parmDictionary)):
+        resultDict['status'] = 'error: missing integrity'
+        return resultDict
     integrity = parmDictionary['integrity']
-    
-    
-    
+    if(integrity == ''):
+        resultDict['status'] = 'error: null integrity'
+        return resultDict
+    integritylength = len(integrity)
+    if (integritylength < 64):
+        resultDict['status'] = 'error: short integrity'
+        return resultDict
+    if (integritylength > 64):
+        resultDict['status'] = 'error: long integrity'
+        return resultDict
+    if (ishex(integrity) != 0):
+        resultDict['status'] = 'error: non hex characters integrity'
+        return resultDict
+
     # get the number of possible ways of light and dark tokens
     light_possibleways = 0
     dark_possibleways = 0
@@ -167,6 +181,25 @@ def _status(parmDictionary):
         resultDict['status'] = 'not ok'
         return resultDict
 
+# determine if the str is hex
+def ishex(s):
+    list_s = list(s)
+    nohex = 0
+    for i in range (0, len(str)):
+        if (list_s[i] >= '0') and (list_s[i] <= '9'):
+            nohex +=0
+        if (list_s[i] >= 'A') and (list_s[i] <= 'F'):
+            nohex +=0
+        if (list_s[i] >= 'a') and (list_s[i] <= 'f'):
+            nohex +=0
+        else:
+            nohex +=1
+    
+    if nohex == 0:
+        return 0
+    if nohex != 0:
+        return 1
+    
 # determine if it is out of boundary                       
 def hasposition(x, y, maxsize):
     if x < 0 or x > maxsize-1 or y <0 or y > maxsize-1 :
