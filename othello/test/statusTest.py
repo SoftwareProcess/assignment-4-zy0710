@@ -380,4 +380,14 @@ class StatusTest(TestCase):
         expectResult = {'status': 'error: below bound dark'}
         actualResult = status(self.inputDictionary)
         self.assertEqual(expectResult,actualResult) 
+    
+    def test_912NonIntegerDark(self):
+        self.setLight(5)
+        self.setDark(1.2)
+        self.setBlank(1)
+        self.setBoard([1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,1.2,1,1,1,1,1.2,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1])
+        self.setIntegrity('e62a2ec6eb082391a6a5664b4f4dbd8130e43d6589267b19b831423bfcde4a9d')
+        expectResult = {'status': 'error: non integer dark'}
+        actualResult = status(self.inputDictionary)
+        self.assertEqual(expectResult,actualResult)
         
