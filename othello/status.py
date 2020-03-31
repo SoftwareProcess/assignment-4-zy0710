@@ -18,6 +18,25 @@ def _status(parmDictionary):
     if(not('light' in parmDictionary)):
         parmDictionary['light'] = DEFAULT_LIGHT
     light = parmDictionary['light']
+    if(light == ''):
+        resultDict['status'] = 'error: null light'
+        return resultDict
+    try:
+        lightNumeric = float(light)
+        if(lightNumeric - int(lightNumeric) > 0):
+            resultDict['status'] = 'error: non-integer light'
+            return resultDict
+        light = int(light)
+    except:
+        resultDict['status'] = 'error: non-integer light'
+        return resultDict
+    if(light < 0):
+        resultDict['status'] = 'error: below bound light'
+        return resultDict
+    if(light > 9):
+        resultDict['status'] = 'error: above bound light'
+        return resultDict
+    
     
     # Validate dark
     if(not('dark' in parmDictionary)):
