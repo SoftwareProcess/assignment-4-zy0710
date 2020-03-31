@@ -360,5 +360,6 @@ class StatusTest(TestCase):
         expectResult = {'status': 'error: null light'}
         actualResult = status(self.inputDictionary)
         self.assertEqual(expectResult,actualResult)
+    
         
         

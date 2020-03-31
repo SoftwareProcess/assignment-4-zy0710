@@ -24,11 +24,11 @@ def _status(parmDictionary):
     try:
         lightNumeric = float(light)
         if(lightNumeric - int(lightNumeric) > 0):
-            resultDict['status'] = 'error: non-integer light'
+            resultDict['status'] = 'error: non integer light'
             return resultDict
         light = int(light)
     except:
-        resultDict['status'] = 'error: non-integer light'
+        resultDict['status'] = 'error: non integer light'
         return resultDict
     if(light < 0):
         resultDict['status'] = 'error: below bound light'
