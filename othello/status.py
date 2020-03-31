@@ -6,6 +6,7 @@
 
 import math
 import numpy as np
+import re
 
 def _status(parmDictionary):
     
@@ -183,21 +184,13 @@ def _status(parmDictionary):
 
 # determine if the str is hex
 def ishex(s):
-    list_s = list(s)
-    nohex = 0
-    for i in range (0, len(s)):
-        if (list_s[i] >= '0') and (list_s[i] <= '9'):
-            nohex +=0
-        if (list_s[i] >= 'A') and (list_s[i] <= 'F'):
-            nohex +=0
-        if (list_s[i] >= 'a') and (list_s[i] <= 'f'):
-            nohex +=0
-        else:
-            nohex +=1
-    
-    if nohex == 0:
+    lowerchar = re.findall(r'[a-f]',s)
+    upperchar = re.findall(r'[A-F]',s)
+    num = re.findall(r'[0-9]',s)
+    lenstr = len(lowerchar)+len(upperchar)+len(num)
+    if lenstr == 64:
         return 0
-    if nohex != 0:
+    if lenstr != 64:
         return 1
     
 # determine if it is out of boundary                       
