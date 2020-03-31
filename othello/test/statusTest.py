@@ -220,7 +220,15 @@ class StatusTest(TestCase):
         actualResult = status(self.inputDictionary)
         self.assertEqual(expectResult,actualResult)
     
-    
+    def test100_041HighBoundBlank(self):
+        self.setLight(5)
+        self.setDark(6)
+        self.setBlank(9)
+        self.setBoard([9,9,9,9,9,9,9,9,9,9,9,9,9,9,5,6,9,9,9,9,6,5,9,9,9,9,9,9,9,9,9,9,9,9,9,9])
+        self.setIntegrity('5b698f38d9d1c1754df196ee688f3900ceba9d074cb74b5e17c19a197b69bf02')
+        expectResult = {'status': 'ok'}
+        actualResult = status(self.inputDictionary)
+        self.assertEqual(expectResult,actualResult)
     
     
     
