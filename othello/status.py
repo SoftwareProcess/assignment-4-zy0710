@@ -17,23 +17,23 @@ def _status(parmDictionary):
     # Validate light
     if(not('light' in parmDictionary)):
         parmDictionary['light'] = DEFAULT_LIGHT
-    light = parmDictionary('light')
+    light = parmDictionary['light']
     
     # Validate dark
     if(not('dark' in parmDictionary)):
         parmDictionary['dark'] = DEFAULT_DARK
-    dark = parmDictionary('dark')
+    dark = parmDictionary['dark']
     
     # Validate blank
     if(not('blank' in parmDictionary)):
         parmDictionary['blank'] = DEFAULT_BLANK
-    blank = parmDictionary('blank')
+    blank = parmDictionary['blank']
     
     # Validate board
-    board = parmDictionary('board')
+    board = parmDictionary['board']
     
     # Validate integrity
-    integrity = parmDictionary('integrity')
+    integrity = parmDictionary['integrity']
     
     # Validate Size
     size = int(math.sqrt(len(board)))
