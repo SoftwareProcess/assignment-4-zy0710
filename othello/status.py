@@ -93,7 +93,7 @@ def _status(parmDictionary):
     if(board == ''):
         resultDict['status'] = 'error: null board'
         return resultDict
-    
+    # determine the tokens in board
     if (light not in board) or (dark not in board) or (blank not in board):
         resultDict['status'] = 'error: non light/dark/blank tokens board'
         return resultDict
@@ -121,10 +121,6 @@ def _status(parmDictionary):
         resultDict['status'] = 'error: odd board'
         return resultDict
     size = int(size)
-
-    # get the final board shape
-    board_array = np.array(board)
-    finalboard = np.reshape(board_array, (size, size))
     
     # Validate integrity
     if(not('integrity' in parmDictionary)):
@@ -162,6 +158,9 @@ def _status(parmDictionary):
         resultDict['status'] = 'error: invalid integrity'
         return resultDict
     
+    # get the final board shape
+    board_array = np.array(board)
+    finalboard = np.reshape(board_array, (size, size))
 
     # get the number of possible ways of light and dark tokens
     light_possibleways = 0
@@ -251,11 +250,6 @@ def calsha256(board, light, dark, blank, nextplayer):
     integrity = h.hexdigest()
     
     return integrity
-
-    
-    
-    
-    
     
 # determine if it is out of boundary                       
 def hasposition(x, y, maxsize):
@@ -462,9 +456,3 @@ def closeblock7(board, row, column, blank, size):
                 return has
     else:
         return has            
-                
-        
-    
-    
-    
-    
