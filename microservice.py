@@ -13,14 +13,16 @@ app = Flask(__name__)
 #
 @app.route('/othello')
 def server():
-    parms = {}
-    for key in request.args:
-        parms[key] = str(request.args[key])
-    print(parms)
-    result = dispatch._dispatch(parms)
-    return str(result)
+    try:
+        parms = {}
+        for key in request.args:
+            parms[key] = str(request.args[key])
+        result = dispatch._dispatch(parms)
+        return str(result)
+    except Exception as e:
+        return str(e)
+    
 #-----------------------------------
 port = os.getenv('PORT', '5000')
 if __name__ == "__main__":
     app.run(host = '0.0.0.0', port = int(port))
-
