@@ -105,8 +105,6 @@ def _status(parmDictionary):
             board_list.append(int(x))
         board = board_list
         
-    
-    
     # determine the tokens in board
     if (light not in board) or (dark not in board) or (blank not in board):
         resultDict['status'] = 'error: non light/dark/blank tokens board'
@@ -168,9 +166,16 @@ def _status(parmDictionary):
     # get the final board shape
     board_array = np.array(board)
     finalboard = np.reshape(board_array, (size, size))
+    trans_board = np.transpose(finalboard)
+    trans_board_list = []
+    for a in range(0,size):
+        for b in range(0,size):
+            trans_board_list.append(trans_board[a][b])
+            b = b+1
+        a = a+1
     
-    integrity_light = calsha256(board, light, dark, blank, light)
-    integrity_dark =calsha256(board, light, dark, blank, dark)
+    integrity_light = calsha256(trans_board_list, light, dark, blank, light)
+    integrity_dark =calsha256(trans_board_list, light, dark, blank, dark)
     
     if (integrity != integrity_light) and (integrity != integrity_dark):
         resultDict['status'] = 'error: invalid integrity'
