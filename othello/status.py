@@ -38,6 +38,7 @@ def _status(parmDictionary):
     if(light > 9):
         resultDict['status'] = 'error: above bound light'
         return resultDict
+    light = int(light)
     
     # Validate dark
     if(not('dark' in parmDictionary)):
@@ -61,6 +62,7 @@ def _status(parmDictionary):
     if(dark > 9):
         resultDict['status'] = 'error: above bound dark'
         return resultDict
+    dark = int(dark)
     
     # Validate blank
     if(not('blank' in parmDictionary)):
@@ -84,6 +86,7 @@ def _status(parmDictionary):
     if(blank > 9):
         resultDict['status'] = 'error: above bound blank'
         return resultDict
+    blank = int(blank)
     
     # Validate board
     if(not('board' in parmDictionary)):
@@ -93,6 +96,13 @@ def _status(parmDictionary):
     if(board == ''):
         resultDict['status'] = 'error: null board'
         return resultDict
+    
+    boardnum = re.findall(r'[0-9]',board)
+    board_list = list()
+    for x in boardnum:
+        board_list.append(int(x))
+    board = board_list
+    
     # determine the tokens in board
     if (light not in board) or (dark not in board) or (blank not in board):
         resultDict['status'] = 'error: non light/dark/blank tokens board'
