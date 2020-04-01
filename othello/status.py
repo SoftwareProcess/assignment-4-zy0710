@@ -8,6 +8,7 @@ import math
 import numpy as np
 import re
 import hashlib
+import types
 
 def _status(parmDictionary):
     
@@ -97,11 +98,14 @@ def _status(parmDictionary):
         resultDict['status'] = 'error: null board'
         return resultDict
     
-    boardnum = re.findall(r'[0-9]',board)
-    board_list = list()
-    for x in boardnum:
-        board_list.append(int(x))
-    board = board_list
+    if(type(board) != list):
+        boardnum = re.findall(r'[0-9]',board)
+        board_list = list()
+        for x in boardnum:
+            board_list.append(int(x))
+        board = board_list
+        
+    
     
     # determine the tokens in board
     if (light not in board) or (dark not in board) or (blank not in board):
@@ -161,16 +165,16 @@ def _status(parmDictionary):
         resultDict['status'] = 'error: blank and dark have the same value'
         return resultDict
     
+    # get the final board shape
+    board_array = np.array(board)
+    finalboard = np.reshape(board_array, (size, size))
+    
     integrity_light = calsha256(board, light, dark, blank, light)
     integrity_dark =calsha256(board, light, dark, blank, dark)
     
     if (integrity != integrity_light) and (integrity != integrity_dark):
         resultDict['status'] = 'error: invalid integrity'
         return resultDict
-    
-    # get the final board shape
-    board_array = np.array(board)
-    finalboard = np.reshape(board_array, (size, size))
 
     # get the number of possible ways of light and dark tokens
     light_possibleways = 0
