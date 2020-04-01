@@ -104,7 +104,16 @@ def _status(parmDictionary):
     if(sizeNumeric - int(sizeNumeric) > 0):
         resultDict['status'] = 'error: non square board'
         return resultDict 
-    size = int(size)       
+    size = int(size)  
+    
+    # boundary of board
+    if(size < 6):
+        resultDict['status'] = 'error: below board'
+        return resultDict
+    if(size > 16):
+        resultDict['status'] = 'error: above board'
+        return resultDict
+             
     # size is odd or not
     halfsize = size / 2
     halfsizeNumeric = float(halfsize)
