@@ -26,6 +26,7 @@ def _place(parmDictionary):
         light = int(light)
     except:
         resultDict['status'] = 'error: non integer light'
+        return resultDict
     if(light < 0):
         resultDict['status'] = 'error: below bound light'
         return resultDict
