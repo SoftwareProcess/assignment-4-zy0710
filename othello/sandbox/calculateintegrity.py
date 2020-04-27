@@ -34,11 +34,11 @@ def calsha256(board, light, dark, blank, nextplayer):
 
 if __name__ == '__main__':
     
-    board = [2,2,2,2,2,2,2,0, 2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0, 2,2,2,2,2,2,0,0,2,2,2,2,2,2,0,1,2,2,2,2,2,2,2,0,2,2,2,2,2,2,2,2]
+    board =  [0,0,0,0,0,0,0,0,2,0,0,0,0,0,2,2,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0]   
     light = 1
     dark = 2
     blank = 0
-    size = 8
+    size = 6
     # get the final board shape
     board_array = np.array(board)
     finalboard = np.reshape(board_array, (size, size))

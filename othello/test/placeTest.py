@@ -153,6 +153,16 @@ class StatusTest(TestCase):
         actualResult = place(self.inputDictionary)
         self.assertEqual(expectResult,actualResult)
     
+    def test100_050LowBoundSizeBoard(self):
+        self.setLight(1)
+        self.setDark(2)
+        self.setBlank(0)
+        self.setBoard([0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
+        self.setLocation('2:3')
+        self.setIntegrity('6c3ec0129f5e128f48e2541bd6663a52a825c35f99b9a69d9593f2fc44b0bb4b')
+        expectResult = {'board':[0,0,0,0,0,0,0,0,2,0,0,0,0,0,2,2,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0], 'integrity': '3a166cafe3df2232b416e3277837d634a80bc40efe2ddf3cfda5c1590e7917dc', 'status': 'ok'}        
+        actualResult = place(self.inputDictionary)
+        self.assertEqual(expectResult,actualResult)
     
     
     
