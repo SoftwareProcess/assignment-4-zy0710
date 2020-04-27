@@ -42,6 +42,9 @@ def _place(parmDictionary):
     if(not('dark' in parmDictionary)):
         parmDictionary['dark'] = DEFAULT_DARK
     dark = parmDictionary['dark']
+    if(dark < 0):
+        resultDict['status'] = 'error: below bound dark'
+        return resultDict
     if(dark > 9):
         resultDict['status'] = 'error: above bound dark'
         return resultDict
