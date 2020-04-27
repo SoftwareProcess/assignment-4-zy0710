@@ -40,9 +40,15 @@ def _place(parmDictionary):
     size = int(size) 
     
     #valid location
-    location_row = parmDictionary['location_row']
+    location = parmDictionary['location']
+    
+    a = re.findall(r'\d+\.?\d*',location)
+    list1 = list()
+    for x in a :
+        list1.append(int(x))
+    location_row =list1[0]
+    location_column = list1[1]
     location_row = int(location_row)-1
-    location_column = parmDictionary['location_column']
     location_column =  int(location_column)-1
     
     #valid integrity
