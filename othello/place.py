@@ -103,6 +103,14 @@ def _place(parmDictionary):
         return resultDict 
     size = int(size) 
     
+    # size is odd or not
+    halfsize = size / 2
+    halfsizeNumeric = float(halfsize)
+    if(halfsizeNumeric - int(halfsizeNumeric) > 0):
+        resultDict['status'] = 'error: odd board'
+        return resultDict
+    size = int(size)
+    
     #valid location
     location = parmDictionary['location']
     
