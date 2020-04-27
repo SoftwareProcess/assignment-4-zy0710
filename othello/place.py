@@ -139,6 +139,10 @@ def _place(parmDictionary):
     
     #valid integrity
     integrity = parmDictionary['integrity']
+    integritylength = len(integrity)
+    if (integritylength < 64):
+        resultDict['status'] = 'error: short integrity'
+        return resultDict
     
     finalboard = getfinalboard(board, size)
     
