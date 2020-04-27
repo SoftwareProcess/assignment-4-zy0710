@@ -55,14 +55,14 @@ def _place(parmDictionary):
     integrity_dark = calsha256(trans_board_list, light, dark, blank, dark)
     
     #get the direction of the place coin
-    leftupdict = direction0(board, location_row, location_column, light, dark, blank, size)
-    updict = direction1(board, location_row, location_column, light, dark, blank, size)
-    rightupdict = direction2(board, location_row, location_column, light, dark, blank, size)
-    leftdict = direction3(board, location_row, location_column, light, dark, blank, size)
-    rightdict = direction4(board, location_row, location_column, light, dark, blank, size)
-    leftdowndict = direction5(board, location_row, location_column, light, dark, blank, size)
-    downdict = direction6(board, location_row, location_column, light, dark, blank, size)
-    rightdowndict = direction7(board, location_row, location_column, light, dark, blank, size)
+    leftupdict = direction0(finalboard, location_row, location_column, light, dark, blank, size)
+    updict = direction1(finalboard, location_row, location_column, light, dark, blank, size)
+    rightupdict = direction2(finalboard, location_row, location_column, light, dark, blank, size)
+    leftdict = direction3(finalboard, location_row, location_column, light, dark, blank, size)
+    rightdict = direction4(finalboard, location_row, location_column, light, dark, blank, size)
+    leftdowndict = direction5(finalboard, location_row, location_column, light, dark, blank, size)
+    downdict = direction6(finalboard, location_row, location_column, light, dark, blank, size)
+    rightdowndict = direction7(finalboard, location_row, location_column, light, dark, blank, size)
     
     #inverse the coin
     if integrity == integrity_light:
