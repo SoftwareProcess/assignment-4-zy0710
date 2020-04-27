@@ -142,6 +142,9 @@ def _place(parmDictionary):
         resultDict['status'] = 'error: missing integrity'
         return resultDict
     integrity = parmDictionary['integrity']
+    if(integrity == ''):
+        resultDict['status'] = 'error: null integrity'
+        return resultDict
     integritylength = len(integrity)
     if (integritylength < 64):
         resultDict['status'] = 'error: short integrity'
