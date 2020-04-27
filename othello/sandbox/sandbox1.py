@@ -157,6 +157,9 @@ if __name__ == '__main__':
     print(integrity_light)
     print(integrity_dark)
     
+    if integrity == integrity_dark:
+        print('dark')
+    
     leftupdict = direction0(finalboard, location_row, location_column, light, dark, blank, size)
     downdict = direction6(finalboard, location_row, location_column, light, dark, blank, size)
     rightdowndict = direction7(finalboard, location_row, location_column, light, dark, blank, size)

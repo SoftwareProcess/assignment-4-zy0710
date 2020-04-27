@@ -124,53 +124,53 @@ def _place(parmDictionary):
         next_player0 = dark
         next_player1 = light
         if leftupdict['light'] != 0 :
-            finalboard[location_row][location_column] = light
+            finalboard[location_row][location_column] = dark
             for i in range (0, leftupdict['light']):
                 location_row -=1
                 location_column -=1
-                finalboard[location_row][location_column] = light
+                finalboard[location_row][location_column] = dark
         elif updict['light'] != 0 :
-            finalboard[location_row][location_column] = light
+            finalboard[location_row][location_column] = dark
             for i in range (0, leftupdict['light']):
                 location_row -=1
                 location_column -=1
-                finalboard[location_row][location_column] = light
+                finalboard[location_row][location_column] = dark
         elif rightupdict['light'] != 0:
-            finalboard[location_row][location_column] = light
+            finalboard[location_row][location_column] = dark
             for i in range (0, leftupdict['light']):
                 location_row -=1
                 location_column -=1
-                finalboard[location_row][location_column] = light
+                finalboard[location_row][location_column] = dark
         elif leftdict['light'] != 0:
-            finalboard[location_row][location_column] = light
+            finalboard[location_row][location_column] = dark
             for i in range (0, leftupdict['light']):
                 location_row -=1
                 location_column -=1
-                finalboard[location_row][location_column] = light
+                finalboard[location_row][location_column] = dark
         elif rightdict['light'] != 0:
-            finalboard[location_row][location_column] = light
+            finalboard[location_row][location_column] = dark
             for i in range (0, leftupdict['light']):
                 location_row -=1
                 location_column -=1
-                finalboard[location_row][location_column] = light
+                finalboard[location_row][location_column] = dark
         elif leftdowndict['light'] != 0:
-            finalboard[location_row][location_column] = light
+            finalboard[location_row][location_column] = dark
             for i in range (0, leftupdict['light']):
                 location_row -=1
                 location_column -=1
-                finalboard[location_row][location_column] = light
+                finalboard[location_row][location_column] = dark
         elif downdict['light'] != 0:
-            finalboard[location_row][location_column] = light
+            finalboard[location_row][location_column] = dark
             for i in range (0, leftupdict['light']):
                 location_row -=1
                 location_column -=1
-                finalboard[location_row][location_column] = light
+                finalboard[location_row][location_column] = dark
         elif rightdowndict['light'] != 0:
-            finalboard[location_row][location_column] = light
+            finalboard[location_row][location_column] = dark
             for i in range (0, leftupdict['light']):
                 location_row -=1
                 location_column -=1
-                finalboard[location_row][location_column] = light
+                finalboard[location_row][location_column] = dark
         else:
             # location cannot be placed
             return resultDict 
