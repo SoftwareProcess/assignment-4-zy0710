@@ -136,6 +136,9 @@ def _place(parmDictionary):
     location_column = list1[1]
     location_row = int(location_row)-1
     location_column =  int(location_column)-1
+    if location_row < 0 or location_row > size-1 or location_column < 0 or location_column > size-1:
+        resultDict['status'] = 'error: out of bound location'
+        return resultDict
     
     #valid integrity
     if(not('integrity' in parmDictionary)):
