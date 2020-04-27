@@ -21,6 +21,8 @@ def _place(parmDictionary):
     light = int(light)
     
     #valid dark
+    if(not('dark' in parmDictionary)):
+        parmDictionary['dark'] = DEFAULT_DARK
     dark = parmDictionary['dark']
     dark = int(dark)
     
