@@ -18,6 +18,9 @@ def _place(parmDictionary):
     if(not('light' in parmDictionary)):
         parmDictionary['light'] = DEFAULT_LIGHT
     light = parmDictionary['light']
+    if(light == ''):
+        resultDict['status'] = 'error: null light'
+        return resultDict
     try:
         lightNumeric = float(light)
         if(lightNumeric - int(lightNumeric) > 0):
