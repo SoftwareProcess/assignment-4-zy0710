@@ -15,6 +15,8 @@ def _place(parmDictionary):
     resultDict = {}
     
     #valid light
+    if(not('light' in parmDictionary)):
+        parmDictionary['light'] = DEFAULT_LIGHT
     light = parmDictionary['light']
     light = int(light)
     
