@@ -265,7 +265,15 @@ class StatusTest(TestCase):
         actualResult = place(self.inputDictionary)
         self.assertEqual(expectResult,actualResult)
     
-    
+    def test_903NullLight(self):
+        self.setLight('')
+        self.setDark(2)
+        self.setBlank(1)
+        self.setBoard([1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,2,1,1,1,1,2,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1])
+        self.setIntegrity('1cc0050055aa122edbb536cc63dfe515e6a55132a42a6c8fa41349ab6e572c6a')
+        expectResult = {'status': 'error: null light'}
+        actualResult = place(self.inputDictionary)
+        self.assertEqual(expectResult,actualResult)
     
     
     
