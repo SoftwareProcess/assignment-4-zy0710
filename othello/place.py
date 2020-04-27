@@ -18,6 +18,9 @@ def _place(parmDictionary):
     if(not('light' in parmDictionary)):
         parmDictionary['light'] = DEFAULT_LIGHT
     light = parmDictionary['light']
+    if(light < 0):
+        resultDict['status'] = 'error: below bound light'
+        return resultDict
     if(light > 9):
         resultDict['status'] = 'error: above bound light'
         return resultDict
