@@ -287,7 +287,16 @@ class StatusTest(TestCase):
         actualResult = place(self.inputDictionary)
         self.assertEqual(expectResult,actualResult)
     
-    
+    def test_911BelowBoundDark(self):
+        self.setLight(5)
+        self.setDark(-1)
+        self.setBlank(1)
+        self.setBoard([1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,-1,1,1,1,1,-1,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1])
+        self.setLocation('2:3')
+        self.setIntegrity('301e0f00c1b83b65adc1d4fd5e87aaf7f594aa20842ab1df86a6be2e144367db')
+        expectResult = {'status': 'error: below bound dark'}
+        actualResult = place(self.inputDictionary)
+        self.assertEqual(expectResult,actualResult) 
     
     
     
