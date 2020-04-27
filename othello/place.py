@@ -199,7 +199,6 @@ def _place(parmDictionary):
     resultDict['integrity'] = integrity_new
     resultDict['status'] = 'ok'
     
-    print(resultDict)
     return resultDict
     
 # left-up
