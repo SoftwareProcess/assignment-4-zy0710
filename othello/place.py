@@ -291,6 +291,7 @@ def _place(parmDictionary):
             return resultDict 
     else:
         #error integrity
+        resultDict['status'] = 'error: invalid integrity'
         return resultDict
     
     #get new play board
