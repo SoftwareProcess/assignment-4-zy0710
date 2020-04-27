@@ -516,4 +516,15 @@ class StatusTest(TestCase):
         actualResult = place(self.inputDictionary)
         self.assertEqual(expectResult,actualResult)
     
+    def test_961BliankEqualToLight(self):
+        self.setLight(1)
+        self.setDark(2)
+        self.setBlank(1)
+        self.setBoard([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1])
+        self.setLocation('2:3')
+        self.setIntegrity('c725061d80e342070c231d2b987c476f92b8f3d9e5826c2223cff281562e8e2c')
+        expectResult = {'status': 'error: blank and light have the same value'}
+        actualResult = place(self.inputDictionary)
+        self.assertEqual(expectResult,actualResult)
+    
     
