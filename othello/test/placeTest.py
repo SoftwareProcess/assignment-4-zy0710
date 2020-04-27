@@ -201,10 +201,10 @@ class StatusTest(TestCase):
         self.setLight(1)
         self.setDark(2)
         self.setBlank(0)
-        self.setBoard([0,2,2,2,2,2,2,0, 1,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0, 2,2,2,2,2,2,0,0,2,2,2,2,2,2,0,1,2,2,2,2,2,2,2,0,2,2,2,2,2,2,2,2])
+        self.setBoard([0,2,2,2,2,2,2,0,1,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,2,2,2,2,2,2,2,0,1,2,2,2,2,2,2,2,0,2,2,2,2,2,2,2,2])
         self.setLocation('1:1')
-        self.setIntegrity('51d9051dce493839995a01903212cf605e0247ac31c1d8fa1f996dbc6fcdf1b9')
-        expectResult = {'board':[2,2,2,2,2,2,2,0, 2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0, 2,2,2,2,2,2,0,0,2,2,2,2,2,2,0,1,2,2,2,2,2,2,2,0,2,2,2,2,2,2,2,2], 'integrity': 'bc94def54b6e3ec7fe0890f16f87a0ed9368ea420713337e36f8ea0723f17fd4', 'status': 'ok'}        
+        self.setIntegrity('45e867b1afe42012deea7c58e0826a4a6935caf63a20b85b9869f84471137ceb')
+        expectResult = {'board':[2,2,2,2,2,2,2,0,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,2,2,2,2,2,2,2,0,1,2,2,2,2,2,2,2,0,2,2,2,2,2,2,2,2], 'integrity': '8bb12cf2c0dbe997bc47bf165e6e1ad84c90ed0e818e47eb3e1e35097c5d5ca7', 'status': 'ok'}        
         actualResult = place(self.inputDictionary)
         self.assertEqual(expectResult,actualResult)
     
