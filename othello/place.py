@@ -110,6 +110,9 @@ def _place(parmDictionary):
         return resultDict 
     size = int(size) 
     
+    if(size < 6):
+        resultDict['status'] = 'error: below board'
+        return resultDict
     if(size > 16):
         resultDict['status'] = 'error: above board'
         return resultDict
