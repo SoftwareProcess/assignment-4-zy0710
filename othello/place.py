@@ -234,7 +234,7 @@ def _place(parmDictionary):
             if finalboard_new[s] == dark:
                 dark_token_count +=1 
                 
-        resultDict['status'] = 'end' + str(light_token_count) + '/' + str(dark_token_count)
+        resultDict['status'] = 'end:' + str(light_token_count) + '/' + str(dark_token_count)
         next_player1 = dark
 
     #get new integrity
