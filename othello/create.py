@@ -169,29 +169,6 @@ def _create(parmDictionary):
     next_player = dark
     integrity = calsha256(finalboard, light, dark, blank, next_player)
     
-    
-#     finalboard_new = [str(x) for x in finalboard]
-#     strboard = ''.join(finalboard_new)
-#     
-#     next_player = dark
-#     followinglist = []
-#     followinglist.append('/')
-#     followinglist.append(light)
-#     followinglist.append('/')
-#     followinglist.append(dark)
-#     followinglist.append('/')
-#     followinglist.append(blank)
-#     followinglist.append('/')
-#     followinglist.append(next_player)
-#     followinglist_new = [str(x) for x in followinglist]
-#     strfollowinglist = ''.join(followinglist_new)
-#     
-#     str_new = strboard + strfollowinglist
-#     
-#     h = hashlib.sha256()
-#     h.update(str_new.encode())
-#     integrity = h.hexdigest()
-    
     resultDict['integrity'] = integrity
     
     resultDict['status'] = 'ok'

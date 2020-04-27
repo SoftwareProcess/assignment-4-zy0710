@@ -13,7 +13,7 @@ def _status(parmDictionary):
     DEFAULT_LIGHT = 1
     DEFAULT_DARK = 2
     DEFAULT_BLANK = 0
-    resultDict = {'status': 'status stub'}
+    resultDict = {}
     
     # Validate light
     if(not('light' in parmDictionary)):
