@@ -220,6 +220,9 @@ def _place(parmDictionary):
     if light_possible ==0 and dark_possible >0 :
         resultDict['status'] = 'ok'
         next_player1 = dark
+    if light_possible >0 and dark_possible ==0 :
+        resultDict['status'] = 'ok'
+        next_player1 = light
 
     #get new integrity
     trans_finalboard_new_list = transposeboard(finalboard_new, size)
