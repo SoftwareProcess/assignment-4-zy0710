@@ -165,6 +165,9 @@ def _place(parmDictionary):
     if(blank == light):
         resultDict['status'] = 'error: blank and light have the same value'
         return resultDict
+    if(dark == blank):
+        resultDict['status'] = 'error: blank and dark have the same value'
+        return resultDict
     
     finalboard = getfinalboard(board, size)
     
