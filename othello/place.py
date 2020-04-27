@@ -91,6 +91,10 @@ def _place(parmDictionary):
         resultDict['status'] = 'error: missing board'
         return resultDict
     board = parmDictionary['board']
+    if(board == ''):
+        resultDict['status'] = 'error: null board'
+        return resultDict
+    
     if(type(board) != list):
         boardnum = re.findall(r'[0-9]',board)
         board_list = list()
