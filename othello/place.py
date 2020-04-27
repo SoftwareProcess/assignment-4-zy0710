@@ -138,6 +138,9 @@ def _place(parmDictionary):
     location_column =  int(location_column)-1
     
     #valid integrity
+    if(not('integrity' in parmDictionary)):
+        resultDict['status'] = 'error: missing integrity'
+        return resultDict
     integrity = parmDictionary['integrity']
     integritylength = len(integrity)
     if (integritylength < 64):
