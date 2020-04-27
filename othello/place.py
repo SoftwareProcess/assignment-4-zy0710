@@ -66,6 +66,9 @@ def _place(parmDictionary):
     if(not('blank' in parmDictionary)):
         parmDictionary['blank'] = DEFAULT_BLANK
     blank = parmDictionary['blank']
+    if(blank == ''):
+        resultDict['status'] = 'error: null blank'
+        return resultDict
     try:
         blankNumeric = float(blank)
         if(blankNumeric - int(blankNumeric) > 0):
