@@ -386,6 +386,15 @@ class StatusTest(TestCase):
         actualResult = place(self.inputDictionary)
         self.assertEqual(expectResult,actualResult)
     
+    def test_932MissingBoard(self):
+        self.setLight(1)
+        self.setDark(2)
+        self.setBlank(3)
+        self.setLocation('2:3')
+        self.setIntegrity('1e3f8bb2d56c5b4483c9f3dccf7bc16d339534a98020e9a28383aaa219f3e64d')
+        expectResult = {'status': 'error: missing board'}
+        actualResult = place(self.inputDictionary)
+        self.assertEqual(expectResult,actualResult)
     
     
     
