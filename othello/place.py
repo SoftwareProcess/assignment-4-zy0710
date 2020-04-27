@@ -18,6 +18,9 @@ def _place(parmDictionary):
     if(not('light' in parmDictionary)):
         parmDictionary['light'] = DEFAULT_LIGHT
     light = parmDictionary['light']
+    if(light > 9):
+        resultDict['status'] = 'error: above bound light'
+        return resultDict
     light = int(light)
     
     #valid dark
