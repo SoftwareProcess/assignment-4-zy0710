@@ -41,9 +41,9 @@ def _place(parmDictionary):
     
     #valid location
     location_row = parmDictionary['location_row']
-    location_row = int(location_row)
+    location_row = int(location_row)-1
     location_column = parmDictionary['location_column']
-    location_column =  int(location_column)
+    location_column =  int(location_column)-1
     
     #valid integrity
     integrity = parmDictionary['integrity']
