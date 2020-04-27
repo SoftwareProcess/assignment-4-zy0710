@@ -192,12 +192,40 @@ def _place(parmDictionary):
     
     resultDict['board'] = finalboard_new
     
+    #determine the status
+    light_possible = 0
+    dark_possible =0
+
+    blockdict_thisblock = {}
+    for c in range(0,size):
+        for d in range(0,size):
+            if finalboard[c][d] == blank:
+                blockdict0 = direction0(finalboard, c, d, light, dark, blank, size)
+                blockdict1 = direction1(finalboard, c, d, light, dark, blank, size)
+                blockdict2 = direction2(finalboard, c, d, light, dark, blank, size)
+                blockdict3 = direction3(finalboard, c, d, light, dark, blank, size)
+                blockdict4 = direction4(finalboard, c, d, light, dark, blank, size)
+                blockdict5 = direction5(finalboard, c, d, light, dark, blank, size)
+                blockdict6 = direction6(finalboard, c, d, light, dark, blank, size)
+                blockdict7 = direction7(finalboard, c, d, light, dark, blank, size)
+                
+                blockdict_thisblock['dark'] = blockdict0['dark']+blockdict1['dark']+blockdict2['dark']+blockdict3['dark']+blockdict4['dark']+blockdict5['dark']+blockdict6['dark']+blockdict7['dark']
+                blockdict_thisblock['light'] = blockdict0['light']+blockdict1['light']+blockdict2['light']+blockdict3['light']+blockdict4['light']+blockdict5['light']+blockdict6['light']+blockdict7['light']
+                
+                light_possible += blockdict_thisblock['dark']
+                dark_possible += blockdict_thisblock['light']
+    
+    if light_possible > 0 and dark_possible >0 :
+        resultDict['status'] = 'ok'
+    if light_possible ==0 and dark_possible >0 :
+        resultDict['status'] = 'ok'
+        next_player1 = dark
+
     #get new integrity
     trans_finalboard_new_list = transposeboard(finalboard_new, size)
     integrity_new = calsha256(trans_finalboard_new_list, light, dark, blank, next_player1)
     
     resultDict['integrity'] = integrity_new
-    resultDict['status'] = 'ok'
     
     return resultDict
     
