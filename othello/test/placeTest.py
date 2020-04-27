@@ -549,4 +549,15 @@ class StatusTest(TestCase):
         actualResult = place(self.inputDictionary)
         self.assertEqual(expectResult,actualResult)
     
+    def test_964BoardwithNonLightTokens(self):
+        self.setLight(1)
+        self.setDark(2)
+        self.setBlank(3)
+        self.setBoard([0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
+        self.setLocation('2:3')
+        self.setIntegrity('c9fd7c0049f79f33e45998064cd1fca01600dd5cdc55cb3bf33169cd07c1905a')
+        expectResult = {'status': 'error: non light/dark/blank tokens board'}
+        actualResult = place(self.inputDictionary)
+        self.assertEqual(expectResult,actualResult)
+    
     
