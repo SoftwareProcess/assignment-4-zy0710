@@ -342,6 +342,16 @@ class StatusTest(TestCase):
         actualResult = place(self.inputDictionary)
         self.assertEqual(expectResult,actualResult)
     
+    def test_922NonIntegerBlank(self):
+        self.setLight(1)
+        self.setDark(2)
+        self.setBlank('1E5')
+        self.setBoard([1E5,1E5,1E5,1E5,1E5,1E5,1E5,1E5,1E5,1E5,1E5,1E5,1E5,1E5,1,2,1E5,1E5,1E5,1E5,2,1,1E5,1E5,1E5,1E5,1E5,1E5,1E5,1E5,1E5,1E5,1E5,1E5,1E5,1E5])
+        self.setLocation('2:3')
+        self.setIntegrity('fe62b7f99befb02e21c50cc755a68ef80fb59d56224b02a1f2888e0830454773')
+        expectResult = {'status': 'error: non integer blank'}
+        actualResult = place(self.inputDictionary)
+        self.assertEqual(expectResult,actualResult)
     
     
     
