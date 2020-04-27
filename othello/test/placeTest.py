@@ -143,6 +143,16 @@ class StatusTest(TestCase):
         actualResult = place(self.inputDictionary)
         self.assertEqual(expectResult,actualResult)
     
+    def test100_042MissingBlank(self):
+        self.setLight(5)
+        self.setDark(6)
+        self.setBoard([0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,6,0,0,0,0,6,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
+        self.setLocation('2:3')
+        self.setIntegrity('062f219e852404144cd7967bcbac5d5d82c151697d8eacfd8c29779acbc58b19')
+        expectResult = {'board':[0,0,0,0,0,0,0,0,6,0,0,0,0,0,6,6,0,0,0,0,6,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0], 'integrity': 'd599b0771ef0a0ce11d0b974fde35cc863896da7161d35c7fd9a34a342f837d6', 'status': 'ok'}        
+        actualResult = place(self.inputDictionary)
+        self.assertEqual(expectResult,actualResult)
+    
     
     
     
