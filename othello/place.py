@@ -97,6 +97,10 @@ def _place(parmDictionary):
     
     #validate size
     size = math.sqrt(len(board))
+    sizeNumeric = float(size)
+    if(sizeNumeric - int(sizeNumeric) > 0):
+        resultDict['status'] = 'error: non square board'
+        return resultDict 
     size = int(size) 
     
     #valid location
