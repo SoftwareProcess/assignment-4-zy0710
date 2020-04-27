@@ -131,7 +131,7 @@ def _place(parmDictionary):
             # location cannot be placed
             return resultDict
         
-    if integrity == integrity_dark:
+    elif integrity == integrity_dark:
         next_player0 = dark
         next_player1 = light
         if leftupdict['light'] != 0 :
