@@ -27,6 +27,8 @@ def _place(parmDictionary):
     dark = int(dark)
     
     #valid blank
+    if(not('blank' in parmDictionary)):
+        parmDictionary['blank'] = DEFAULT_BLANK
     blank = parmDictionary['blank']
     blank = int(blank)
     
