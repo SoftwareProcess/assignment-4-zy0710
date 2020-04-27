@@ -78,7 +78,6 @@ def _place(parmDictionary):
     
     #inverse the coin
     if integrity == integrity_light:
-        print('the turn is light')
         next_player0 = light
         next_player1 = dark
         if leftupdict['dark'] != 0 :
@@ -99,12 +98,10 @@ def _place(parmDictionary):
                 location_column +=1
                 finalboard[location_row][location_column] = light
         elif leftdict['dark'] != 0:
-            print ('it is left dict!')
             finalboard[location_row][location_column] = light
             for i in range (0, leftdict['dark']):
                 location_column -=1
                 finalboard[location_row][location_column] = light
-            print(finalboard)
         elif rightdict['dark'] != 0:
             finalboard[location_row][location_column] = light
             for i in range (0, rightdict['dark']):
@@ -185,8 +182,6 @@ def _place(parmDictionary):
         #error integrity
         return resultDict
     
-    print(finalboard)
-    
     #get new play board
     finalboard_new = []
     for a in range(0,size):
@@ -196,8 +191,6 @@ def _place(parmDictionary):
         a = a+1
     
     resultDict['board'] = finalboard_new
-    
-    
     
     #get new integrity
     trans_finalboard_new_list = transposeboard(finalboard_new, size)
