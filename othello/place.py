@@ -102,6 +102,14 @@ def _place(parmDictionary):
             board_list.append(int(x))
         board = board_list
     
+    # determine the tokens in board
+    boardset = set(board)
+    boardset_list = list(boardset)
+    for i in range(0, len(boardset_list)):
+        if (boardset_list[i]!=light and boardset_list[i]!= dark and boardset_list[i]!=blank):
+            resultDict['status'] = 'error: non light/dark/blank tokens board'
+            return resultDict
+    
     #validate size
     size = math.sqrt(len(board))
     sizeNumeric = float(size)
