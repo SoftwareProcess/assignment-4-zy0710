@@ -66,6 +66,9 @@ def _place(parmDictionary):
     if(not('blank' in parmDictionary)):
         parmDictionary['blank'] = DEFAULT_BLANK
     blank = parmDictionary['blank']
+    if(blank < 0):
+        resultDict['status'] = 'error: below bound blank'
+        return resultDict
     if(blank > 9):
         resultDict['status'] = 'error: above bound blank'
         return resultDict
