@@ -18,6 +18,14 @@ def _place(parmDictionary):
     if(not('light' in parmDictionary)):
         parmDictionary['light'] = DEFAULT_LIGHT
     light = parmDictionary['light']
+    try:
+        lightNumeric = float(light)
+        if(lightNumeric - int(lightNumeric) > 0):
+            resultDict['status'] = 'error: non integer light'
+            return resultDict
+        light = int(light)
+    except:
+        resultDict['status'] = 'error: non integer light'
     if(light < 0):
         resultDict['status'] = 'error: below bound light'
         return resultDict
