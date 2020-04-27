@@ -104,6 +104,7 @@ def _place(parmDictionary):
             for i in range (0, leftdict['dark']):
                 location_column -=1
                 finalboard[location_row][location_column] = light
+            print(finalboard)
         elif rightdict['dark'] != 0:
             finalboard[location_row][location_column] = light
             for i in range (0, rightdict['dark']):
@@ -183,6 +184,8 @@ def _place(parmDictionary):
     else:
         #error integrity
         return resultDict
+    
+    print(resultDict)
     
     #get new play board
     finalboard_new = []
