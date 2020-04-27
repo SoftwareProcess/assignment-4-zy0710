@@ -42,6 +42,9 @@ def _place(parmDictionary):
     if(not('dark' in parmDictionary)):
         parmDictionary['dark'] = DEFAULT_DARK
     dark = parmDictionary['dark']
+    if(dark == ''):
+        resultDict['status'] = 'error: null dark'
+        return resultDict
     try:
         darkNumeric = float(dark)
         if(darkNumeric - int(darkNumeric) > 0):
