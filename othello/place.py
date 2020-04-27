@@ -194,6 +194,7 @@ def _place(parmDictionary):
     
     resultDict['integrity'] = integrity_new
     resultDict['status'] = 'ok'
+    return resultDict
     
 # left-up
 def direction0(board, row, column, light, dark, blank, size):
