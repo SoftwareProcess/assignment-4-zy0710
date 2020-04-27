@@ -223,6 +223,7 @@ def _place(parmDictionary):
                 finalboard[location_row][location_column] = light
         else:
             # location cannot be placed
+            resultDict['status'] = 'error: cannot place location'
             return resultDict
         
     elif integrity == integrity_dark:
@@ -274,6 +275,7 @@ def _place(parmDictionary):
                 finalboard[location_row][location_column] = dark
         else:
             # location cannot be placed
+            resultDict['status'] = 'error: cannot place location'
             return resultDict 
     else:
         #error integrity
