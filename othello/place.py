@@ -110,6 +110,10 @@ def _place(parmDictionary):
         return resultDict 
     size = int(size) 
     
+    if(size > 16):
+        resultDict['status'] = 'error: above board'
+        return resultDict
+    
     # size is odd or not
     halfsize = size / 2
     halfsizeNumeric = float(halfsize)
