@@ -4,6 +4,7 @@ import numpy as np
 from pip._vendor.pyparsing import col
 from _sqlite3 import IntegrityError
 import re
+
 # 
 # board = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 # board_size = len(board)
@@ -182,15 +183,32 @@ import re
 # integrity = h.hexdigest()
 # print(integrity)
 
-board =[1,2,2,1,2,2,2,1]
-boardset = set(board)
-boardset_list = list(boardset)
-print(boardset_list)
+# board =[1,2,2,1,2,2,2,1]
+# boardset = set(board)
+# boardset_list = list(boardset)
+# print(boardset_list)
+# 
+# boardset = set(board)
+# boardset_list = list(boardset)
+# for i in range(0, len(boardset_list)):
+#     if (boardset_list[i]!=1 and boardset_list[i]!= 2 and boardset_list[i]!=0):
+#         print(0)
+# 
+# print(1)
 
-boardset = set(board)
-boardset_list = list(boardset)
-for i in range(0, len(boardset_list)):
-    if (boardset_list[i]!=1 and boardset_list[i]!= 2 and boardset_list[i]!=0):
-        print(0)
 
-print(1)
+location = '2:3'
+a = re.findall(r'\d+\.?\d*',location)
+print (a)
+list1 = list()
+for x in a :
+    list1.append(int(x))
+print(list1)
+location_row =list1[0]
+location_column = list1[1]
+print(location_row)
+print(location_column)
+    
+    
+
+
