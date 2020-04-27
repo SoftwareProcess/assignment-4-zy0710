@@ -364,7 +364,16 @@ class StatusTest(TestCase):
         actualResult = place(self.inputDictionary)
         self.assertEqual(expectResult,actualResult)
     
-    
+    def test_930NonSquareBoard(self):
+        self.setLight(1)
+        self.setDark(2)
+        self.setBlank(3)
+        self.setBoard([3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,2,3,3,3,3,2,1,3,3,3,3,3,3,3,3,3,3,3,3,3])
+        self.setLocation('2:3')
+        self.setIntegrity('9d43a04297202bccc81a13b6857179269c0fe33e5227c6569286d54d82493ba6')
+        expectResult = {'status': 'error: non square board'}
+        actualResult = place(self.inputDictionary)
+        self.assertEqual(expectResult,actualResult)
     
     
     
