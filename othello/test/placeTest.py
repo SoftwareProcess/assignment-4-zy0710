@@ -197,6 +197,16 @@ class StatusTest(TestCase):
         actualResult = place(self.inputDictionary)
         self.assertEqual(expectResult,actualResult)
     
+    def test100_070StatusisDark(self):
+        self.setLight(1)
+        self.setDark(2)
+        self.setBlank(0)
+        self.setBoard([0,2,2,2,2,2,2,0, 1,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0, 2,2,2,2,2,2,0,0,2,2,2,2,2,2,0,1,2,2,2,2,2,2,2,0,2,2,2,2,2,2,2,2])
+        self.setLocation('1:1')
+        self.setIntegrity('51d9051dce493839995a01903212cf605e0247ac31c1d8fa1f996dbc6fcdf1b9')
+        expectResult = {'board':[2,2,2,2,2,2,2,0, 2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0, 2,2,2,2,2,2,0,0,2,2,2,2,2,2,0,1,2,2,2,2,2,2,2,0,2,2,2,2,2,2,2,2], 'integrity': 'bc94def54b6e3ec7fe0890f16f87a0ed9368ea420713337e36f8ea0723f17fd4', 'status': 'ok'}        
+        actualResult = place(self.inputDictionary)
+        self.assertEqual(expectResult,actualResult)
     
     
     
