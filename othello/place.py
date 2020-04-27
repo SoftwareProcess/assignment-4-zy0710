@@ -87,6 +87,9 @@ def _place(parmDictionary):
     blank = int(blank)
     
     #valid board
+    if(not('board' in parmDictionary)):
+        resultDict['status'] = 'error: missing board'
+        return resultDict
     board = parmDictionary['board']
     if(type(board) != list):
         boardnum = re.findall(r'[0-9]',board)
