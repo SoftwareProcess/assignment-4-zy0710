@@ -185,7 +185,7 @@ def _place(parmDictionary):
         #error integrity
         return resultDict
     
-    
+    print(finalboard)
     
     #get new play board
     finalboard_new = []
