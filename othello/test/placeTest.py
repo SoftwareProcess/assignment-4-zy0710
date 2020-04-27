@@ -331,6 +331,16 @@ class StatusTest(TestCase):
         actualResult = place(self.inputDictionary)
         self.assertEqual(expectResult,actualResult)
     
+    def test_921BelowBoundBlank(self):
+        self.setLight(1)
+        self.setDark(2)
+        self.setBlank(-1)
+        self.setBoard([-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1,2,-1,-1,-1,-1,2,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1])
+        self.setLocation('2:3')
+        self.setIntegrity('2e226315d3fc18cf5771b45ae78bfe7be9510ee98b6e566e382f8a70861c8e7d')
+        expectResult = {'status': 'error: below bound blank'}
+        actualResult = place(self.inputDictionary)
+        self.assertEqual(expectResult,actualResult)
     
     
     
