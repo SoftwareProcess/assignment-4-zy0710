@@ -215,6 +215,7 @@ def _place(parmDictionary):
                 light_possible += blockdict_thisblock['dark']
                 dark_possible += blockdict_thisblock['light']
     
+    
     if light_possible > 0 and dark_possible >0 :
         resultDict['status'] = 'ok'
     if light_possible ==0 and dark_possible >0 :
@@ -223,6 +224,18 @@ def _place(parmDictionary):
     if light_possible >0 and dark_possible ==0 :
         resultDict['status'] = 'ok'
         next_player1 = light
+    if light_possible ==0 and dark_possible ==0:
+        light_token_count =0
+        dark_token_count =0
+        #determine the count of light and dark
+        for s in range(0,len(finalboard_new)):
+            if finalboard_new[s] == light:
+                light_token_count +=1
+            if finalboard_new[s] == dark:
+                dark_token_count +=1 
+                
+        resultDict['status'] = 'end' + light_token_count + '/' + dark_token_count
+        next_player1 = dark
 
     #get new integrity
     trans_finalboard_new_list = transposeboard(finalboard_new, size)
