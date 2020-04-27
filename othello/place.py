@@ -3,7 +3,7 @@
     
     @author:  Ye Zhao
 '''
-from othello.status import calsha256, getfinalboard, transposeboard, hasposition
+from othello.status import calsha256, getfinalboard, transposeboard, hasposition,ishex
 import re
 import math
 
@@ -145,6 +145,9 @@ def _place(parmDictionary):
         return resultDict
     if (integritylength > 64):
         resultDict['status'] = 'error: long integrity'
+        return resultDict
+    if (ishex(integrity) != 0):
+        resultDict['status'] = 'error: non hex characters integrity'
         return resultDict
     
     
