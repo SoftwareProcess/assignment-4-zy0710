@@ -185,7 +185,7 @@ def _place(parmDictionary):
         #error integrity
         return resultDict
     
-    print(resultDict)
+    
     
     #get new play board
     finalboard_new = []
@@ -197,12 +197,16 @@ def _place(parmDictionary):
     
     resultDict['board'] = finalboard_new
     
+    
+    
     #get new integrity
     trans_finalboard_new_list = transposeboard(finalboard_new, size)
     integrity_new = calsha256(trans_finalboard_new_list, light, dark, blank, next_player1)
     
     resultDict['integrity'] = integrity_new
     resultDict['status'] = 'ok'
+    
+    print(resultDict)
     return resultDict
     
 # left-up
