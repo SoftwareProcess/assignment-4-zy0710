@@ -144,23 +144,36 @@ import re
 #     print(h2)
 #     integrity ='8a1c0659575e8cdd01b2e4ff3f431c845e7e7960279bb7abfaa5465e4a755354'
     
-  
-# a = '333333333333331233332223333333333333/1/2/3/1'
+#   
+# a = '000000002000009200002900000000000000/9/2/0/9'
 # h = hashlib.sha256()
 # h.update(a.encode())
 # integrity = h.hexdigest()
 # print(integrity)
-    
-a = '1111111111111111111111111111111011111100111111021111111011111111/1/2/0/1'
-b = '1111111111111111111111111111111011111100111111021111111011111111/1/2/0/2'
-h1 = hashlib.sha256()
-h2 = hashlib.sha256()
-h1.update(a.encode())
-h2.update(b.encode())
-s1 = h1.hexdigest()
-s2 = h2.hexdigest()
-print(s1)
-print(s2)
+# 
+# a = '111111112111110211112011111111111111/0/2/1/0'
+# h = hashlib.sha256()
+# h.update(a.encode())
+# integrity = h.hexdigest()
+# print(integrity)
+# 
+# 
+# a = '333333333333331233332133333333333333/1/2/3/2'
+# h = hashlib.sha256()
+# h.update(a.encode())
+# integrity = h.hexdigest()
+# print(integrity)
+     
+# a = '1111111111111111111111111111111011111100111111021111111011111111/1/2/0/1'
+# b = '1111111111111111111111111111111011111100111111021111111011111111/1/2/0/2'
+# h1 = hashlib.sha256()
+# h2 = hashlib.sha256()
+# h1.update(a.encode())
+# h2.update(b.encode())
+# s1 = h1.hexdigest()
+# s2 = h2.hexdigest()
+# print(s1)
+# print(s2)
 
 # 
 # a = '000000000000001200002100000000000000/1/2/0/2'
@@ -169,4 +182,15 @@ print(s2)
 # integrity = h.hexdigest()
 # print(integrity)
 
+board =[1,2,2,1,2,2,2,1]
+boardset = set(board)
+boardset_list = list(boardset)
+print(boardset_list)
 
+boardset = set(board)
+boardset_list = list(boardset)
+for i in range(0, len(boardset_list)):
+    if (boardset_list[i]!=1 and boardset_list[i]!= 2 and boardset_list[i]!=0):
+        print(0)
+
+print(1)

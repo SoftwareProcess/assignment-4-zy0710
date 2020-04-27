@@ -5,7 +5,6 @@
 '''
 
 import math
-import numpy as np
 import re
 import hashlib
 import types
@@ -106,9 +105,12 @@ def _status(parmDictionary):
         board = board_list
         
     # determine the tokens in board
-    if (light not in board) or (dark not in board) or (blank not in board):
-        resultDict['status'] = 'error: non light/dark/blank tokens board'
-        return resultDict
+    boardset = set(board)
+    boardset_list = list(boardset)
+    for i in range(0, len(boardset_list)):
+        if (boardset_list[i]!=light and boardset_list[i]!= dark and boardset_list[i]!=blank):
+            resultDict['status'] = 'error: non light/dark/blank tokens board'
+            return resultDict
         
     # Validate Size
     size = math.sqrt(len(board))
@@ -163,16 +165,8 @@ def _status(parmDictionary):
         resultDict['status'] = 'error: blank and dark have the same value'
         return resultDict
     
-    # get the final board shape
-    board_array = np.array(board)
-    finalboard = np.reshape(board_array, (size, size))
-    trans_board = np.transpose(finalboard)
-    trans_board_list = []
-    for a in range(0,size):
-        for b in range(0,size):
-            trans_board_list.append(trans_board[a][b])
-            b = b+1
-        a = a+1
+    finalboard = getfinalboard(board, size)
+    trans_board_list = transposeboard(board, size)
     
     integrity_light = calsha256(trans_board_list, light, dark, blank, light)
     integrity_dark =calsha256(trans_board_list, light, dark, blank, dark)
@@ -474,4 +468,42 @@ def closeblock7(board, row, column, blank, size):
             else:
                 return has
     else:
-        return has            
+        return has      
+
+# get finalboard
+def getfinalboard(board, size):
+    
+    finalboard = []
+    for x in range(0,size):
+        finalboard.append([])
+        for y in range(0,size):
+            finalboard[x].append(board[x*size+y])
+            y += 1
+        x += 1
+    
+    return finalboard
+    
+# transpose the board
+def transposeboard(board, size):
+    
+    finalboard = getfinalboard(board, size)
+        
+    trans_board =[]
+    for p in range(0,size):
+        trans_board.append([])
+        for q in range(0,size):
+            trans_board[p].append(finalboard[q][p])
+            q += 1
+        q += 1
+    
+    trans_board_list = []
+    for a in range(0,size):
+        for b in range(0,size):
+            trans_board_list.append(trans_board[a][b])
+            b = b+1
+        a = a+1
+    
+    return trans_board_list
+    
+    
+    
