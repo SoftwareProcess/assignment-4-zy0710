@@ -243,6 +243,17 @@ class StatusTest(TestCase):
         actualResult = place(self.inputDictionary)
         self.assertEqual(expectResult,actualResult)
     
+    def test_901BelowBoundLight(self):
+        self.setLight(-1)
+        self.setDark(2)
+        self.setBlank(1)
+        self.setBoard([1,1,1,1,1,1,1,1,1,1,1,1,1,1,-1,2,1,1,1,1,2,-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1])
+        self.setLocation('2:3')
+        self.setIntegrity('f31631fdc7ba5ecd3096a306dbc7e43a9bc13fa781b91d83c36057f5050a51da')
+        expectResult = {'status': 'error: below bound light'}
+        actualResult = place(self.inputDictionary)
+        self.assertEqual(expectResult,actualResult)
+    
     
     
     
