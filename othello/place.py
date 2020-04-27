@@ -76,43 +76,43 @@ def _place(parmDictionary):
                 finalboard[location_row][location_column] = light
         elif updict['dark'] != 0 :
             finalboard[location_row][location_column] = light
-            for i in range (0, leftupdict['dark']):
+            for i in range (0, updict['dark']):
                 location_row -=1
                 location_column -=1
                 finalboard[location_row][location_column] = light
         elif rightupdict['dark'] != 0:
             finalboard[location_row][location_column] = light
-            for i in range (0, leftupdict['dark']):
+            for i in range (0, rightupdict['dark']):
                 location_row -=1
                 location_column -=1
                 finalboard[location_row][location_column] = light
         elif leftdict['dark'] != 0:
             finalboard[location_row][location_column] = light
-            for i in range (0, leftupdict['dark']):
+            for i in range (0, leftdict['dark']):
                 location_row -=1
                 location_column -=1
                 finalboard[location_row][location_column] = light
         elif rightdict['dark'] != 0:
             finalboard[location_row][location_column] = light
-            for i in range (0, leftupdict['dark']):
+            for i in range (0, rightdict['dark']):
                 location_row -=1
                 location_column -=1
                 finalboard[location_row][location_column] = light
         elif leftdowndict['dark'] != 0:
             finalboard[location_row][location_column] = light
-            for i in range (0, leftupdict['dark']):
+            for i in range (0, leftdowndict['dark']):
                 location_row -=1
                 location_column -=1
                 finalboard[location_row][location_column] = light
         elif downdict['dark'] != 0:
             finalboard[location_row][location_column] = light
-            for i in range (0, leftupdict['dark']):
+            for i in range (0, downdict['dark']):
                 location_row -=1
                 location_column -=1
                 finalboard[location_row][location_column] = light
         elif rightdowndict['dark'] != 0:
             finalboard[location_row][location_column] = light
-            for i in range (0, leftupdict['dark']):
+            for i in range (0, rightdowndict['dark']):
                 location_row -=1
                 location_column -=1
                 finalboard[location_row][location_column] = light
@@ -131,43 +131,43 @@ def _place(parmDictionary):
                 finalboard[location_row][location_column] = dark
         elif updict['light'] != 0 :
             finalboard[location_row][location_column] = dark
-            for i in range (0, leftupdict['light']):
+            for i in range (0, updict['light']):
                 location_row -=1
                 location_column -=1
                 finalboard[location_row][location_column] = dark
         elif rightupdict['light'] != 0:
             finalboard[location_row][location_column] = dark
-            for i in range (0, leftupdict['light']):
+            for i in range (0, rightupdict['light']):
                 location_row -=1
                 location_column -=1
                 finalboard[location_row][location_column] = dark
         elif leftdict['light'] != 0:
             finalboard[location_row][location_column] = dark
-            for i in range (0, leftupdict['light']):
+            for i in range (0, leftdict['light']):
                 location_row -=1
                 location_column -=1
                 finalboard[location_row][location_column] = dark
         elif rightdict['light'] != 0:
             finalboard[location_row][location_column] = dark
-            for i in range (0, leftupdict['light']):
+            for i in range (0, rightdict['light']):
                 location_row -=1
                 location_column -=1
                 finalboard[location_row][location_column] = dark
         elif leftdowndict['light'] != 0:
             finalboard[location_row][location_column] = dark
-            for i in range (0, leftupdict['light']):
+            for i in range (0, leftdowndict['light']):
                 location_row -=1
                 location_column -=1
                 finalboard[location_row][location_column] = dark
         elif downdict['light'] != 0:
             finalboard[location_row][location_column] = dark
-            for i in range (0, leftupdict['light']):
+            for i in range (0, downdict['light']):
                 location_row -=1
                 location_column -=1
                 finalboard[location_row][location_column] = dark
         elif rightdowndict['light'] != 0:
             finalboard[location_row][location_column] = dark
-            for i in range (0, leftupdict['light']):
+            for i in range (0, rightdowndict['light']):
                 location_row -=1
                 location_column -=1
                 finalboard[location_row][location_column] = dark
