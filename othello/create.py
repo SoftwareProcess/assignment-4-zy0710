@@ -5,6 +5,7 @@
 '''
 
 import hashlib
+from othello.status import calsha256
 
 def _create(parmDictionary):
     ERROR_HEADER = 'error: '
@@ -133,7 +134,7 @@ def _create(parmDictionary):
         result = ERROR_HEADER + e.args[0]
         resultDict[ERROR_KEY] = result
         return resultDict  
-        
+    
     # validate the board
     boardlist = [[] for i in range (size)]
     for i in range (0,size):
@@ -165,27 +166,31 @@ def _create(parmDictionary):
     resultDict['tokens'] = tokensdict
     
     # validate the integrity
-    finalboard_new = [str(x) for x in finalboard]
-    strboard = ''.join(finalboard_new)
-    
     next_player = dark
-    followinglist = []
-    followinglist.append('/')
-    followinglist.append(light)
-    followinglist.append('/')
-    followinglist.append(dark)
-    followinglist.append('/')
-    followinglist.append(blank)
-    followinglist.append('/')
-    followinglist.append(next_player)
-    followinglist_new = [str(x) for x in followinglist]
-    strfollowinglist = ''.join(followinglist_new)
+    integrity = calsha256(finalboard, light, dark, blank, next_player)
     
-    str_new = strboard + strfollowinglist
     
-    h = hashlib.sha256()
-    h.update(str_new.encode())
-    integrity = h.hexdigest()
+#     finalboard_new = [str(x) for x in finalboard]
+#     strboard = ''.join(finalboard_new)
+#     
+#     next_player = dark
+#     followinglist = []
+#     followinglist.append('/')
+#     followinglist.append(light)
+#     followinglist.append('/')
+#     followinglist.append(dark)
+#     followinglist.append('/')
+#     followinglist.append(blank)
+#     followinglist.append('/')
+#     followinglist.append(next_player)
+#     followinglist_new = [str(x) for x in followinglist]
+#     strfollowinglist = ''.join(followinglist_new)
+#     
+#     str_new = strboard + strfollowinglist
+#     
+#     h = hashlib.sha256()
+#     h.update(str_new.encode())
+#     integrity = h.hexdigest()
     
     resultDict['integrity'] = integrity
     

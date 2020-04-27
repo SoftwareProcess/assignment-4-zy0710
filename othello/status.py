@@ -7,14 +7,13 @@
 import math
 import re
 import hashlib
-import types
 
 def _status(parmDictionary):
     
     DEFAULT_LIGHT = 1
     DEFAULT_DARK = 2
     DEFAULT_BLANK = 0
-    resultDict = {}
+    resultDict = {'status': 'status stub'}
     
     # Validate light
     if(not('light' in parmDictionary)):

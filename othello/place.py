@@ -12,7 +12,7 @@ def _place(parmDictionary):
     DEFAULT_LIGHT = 1
     DEFAULT_DARK = 2
     DEFAULT_BLANK = 0
-    resultDict = {}
+    resultDict = {'status': 'place stub'}
     
     #valid light
     if(not('light' in parmDictionary)):
@@ -195,7 +195,6 @@ def _place(parmDictionary):
     
     #inverse the coin
     if integrity == integrity_light:
-        next_player0 = light
         next_player1 = dark
         if leftupdict['dark'] != 0 :
             finalboard[location_row][location_column] = light
@@ -247,7 +246,6 @@ def _place(parmDictionary):
             return resultDict
         
     elif integrity == integrity_dark:
-        next_player0 = dark
         next_player1 = light
         if leftupdict['light'] != 0 :
             finalboard[location_row][location_column] = dark
